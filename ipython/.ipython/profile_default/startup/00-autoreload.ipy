@@ -1,0 +1,2 @@
+%loadext autoreload
+%autoreload 2
