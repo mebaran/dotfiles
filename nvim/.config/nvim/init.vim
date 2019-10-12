@@ -1,11 +1,15 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'roxma/nvim-yarp'
+
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-path'
-Plug 'jalvesaq/Nvim-R'
-Plug 'gaalcaras/ncm-R'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 Plug 'davidhalter/jedi-vim'
 Plug 'w0rp/ale'
@@ -93,11 +97,18 @@ set noshowmode
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 let g:ncm2#matcher = 'substrfuzzy'
 set pumheight=5
 
-autocmd FileType r,rdoc nnoremap <buffer> K :Rhelp <C-R><C-W><CR>
+"Language client coverage
+let g:LanguageClient_serverCommands = {
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Disable Jedi-vim autocompletion and enable call-signatures options
 let g:jedi#auto_initialization = 1
