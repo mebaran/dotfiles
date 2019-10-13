@@ -13,7 +13,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 "Plug 'ncm2/float-preview.nvim'
-
 "Plug 'w0rp/ale'
 
 Plug 'tpope/vim-sensible'
@@ -42,6 +41,7 @@ set number
 set relativenumber
 set hidden
 set mouse=a
+set signcolumn=yes
 
 " themes
 set background=dark
@@ -104,9 +104,13 @@ set pumheight=5
 
 "Language client coverage
 let g:LanguageClient_serverCommands = {
+    \ 'java': ['jdtls', '-data', getcwd()],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
     \ 'python': ["pyls"]
     \ }
+let g:LanguageClient_fzfContextMenu = 0
+let g:LanguageClient_useVirtualText = 0
+
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -114,13 +118,13 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Disable Jedi-vim autocompletion and enable call-signatures options
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = 0
+" let g:jedi#auto_initialization = 1
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#completions_command = ""
+" let g:jedi#show_call_signatures = 0
 
 " AlE config
 let g:ale_lint_on_text_changed = 0
@@ -133,4 +137,4 @@ xmap gx <Plug>(neoterm-repl-send)
 nmap gxx <Plug>(neoterm-repl-send-line)
 let g:neoterm_direct_open_repl = 1
 let g:neoterm_autoinsert = 1
-let g:neoterm_default_mod = ':botright' 
+let g:neoterm_default_mod = ':botright'
