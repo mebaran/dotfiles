@@ -3,16 +3,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'roxma/nvim-yarp'
 
 Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-jedi' | Plug 'davidhalter/jedi-vim'
+Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+"Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+"Plug 'ncm2/float-preview.nvim'
 
-Plug 'davidhalter/jedi-vim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
@@ -78,7 +80,7 @@ nnoremap tl :tablast<CR>
 " NCM2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 " :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone,noselect,preview
 set shortmess+=c
 set noshowmode
 " When the <Enter> key is pressed while the popup menu is visible, it only
@@ -102,7 +104,8 @@ set pumheight=5
 
 "Language client coverage
 let g:LanguageClient_serverCommands = {
-    \ 'r': ['R', '--slave', '-e', 'languageserver::run()']
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'python': ["pyls"]
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
@@ -122,3 +125,12 @@ let g:jedi#show_call_signatures = 0
 " AlE config
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_save = 1
+
+"Neoterm config
+tnoremap <Esc> <C-\><C-n>
+nmap gx <Plug>(neoterm-repl-send)
+xmap gx <Plug>(neoterm-repl-send)
+nmap gxx <Plug>(neoterm-repl-send-line)
+let g:neoterm_direct_open_repl = 1
+let g:neoterm_autoinsert = 1
+let g:neoterm_default_mod = ':botright' 
