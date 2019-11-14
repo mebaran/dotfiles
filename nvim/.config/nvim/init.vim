@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
 
+Plug 'Shougo/echodoc.vim'
 Plug 'kassio/neoterm'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -36,6 +37,8 @@ Plug 'cohama/lexima.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
 
 call plug#end()
+
+let mapleader=" "
 
 set number
 set relativenumber
@@ -77,10 +80,13 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+" buffers
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
 " NCM2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 " :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect,preview
+set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 set noshowmode
 " When the <Enter> key is pressed while the popup menu is visible, it only
@@ -111,30 +117,33 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_fzfContextMenu = 0
 let g:LanguageClient_useVirtualText = 0
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+function SetLSPShortcuts()
+  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
-" Disable Jedi-vim autocompletion and enable call-signatures options
-" let g:jedi#auto_initialization = 1
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#popup_on_dot = 0
-" let g:jedi#completions_command = ""
-" let g:jedi#show_call_signatures = 0
+  nmap K <leader>lh
+endfunction()
 
-" AlE config
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
+augroup LSP
+  autocmd!
+  autocmd FileType r,python,java call SetLSPShortcuts()
+augroup END
 
 "Neoterm config
 tnoremap <Esc> <C-\><C-n>
 nmap gx <Plug>(neoterm-repl-send)
 xmap gx <Plug>(neoterm-repl-send)
 nmap gxx <Plug>(neoterm-repl-send-line)
+let g:neoterm_autoscroll = 1
+let g:neoterm_size = 16
 let g:neoterm_direct_open_repl = 1
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = ':botright'
