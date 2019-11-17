@@ -67,6 +67,7 @@ fi
 export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 export GDK_SCALE=2
+export GDK_DPI_SCALE=-1
 
 # Configure R
 export R_LIBS_USER=~/.R/3.5
