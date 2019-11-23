@@ -62,12 +62,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
-
-# Configure WSL X
-export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
-export LIBGL_ALWAYS_INDIRECT=1
-export GDK_SCALE=2
-export GDK_DPI_SCALE=-1
-
-# Configure R
-export R_LIBS_USER=~/.R/3.5
