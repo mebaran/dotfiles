@@ -22,3 +22,7 @@ export GDK_DPI_SCALE=-1
 # Configure R
 export R_LIBS_USER=~/.R/3.5
 
+# Configure Sybase
+if [[ -f ~/.sa_config.sh  ]]; then;
+    source ~/.sa_config.sh
+fi
