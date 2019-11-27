@@ -14,7 +14,11 @@ fi
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 # Configure WSL X
-export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
+if [[ ! -z $WSL_INTEROP ]]; then
+    export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
+else
+    export DISPLAY=:0.0
+fi
 export LIBGL_ALWAYS_INDIRECT=1
 export GDK_SCALE=2
 export GDK_DPI_SCALE=-1
