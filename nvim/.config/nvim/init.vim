@@ -110,7 +110,7 @@ set pumheight=5
 
 "Language client coverage
 let g:LanguageClient_serverCommands = {
-    \ 'java': ['jdtls', '-data', getcwd()],
+    \ 'java': ['jdtls', getcwd()],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
     \ 'python': ["pyls"]
     \ }
