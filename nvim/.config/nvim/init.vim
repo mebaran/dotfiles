@@ -24,6 +24,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
 
+" rmarkdown support
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+
+Plug 'chrisbra/NrrwRgn'
+Plug 'junegunn/goyo.vim'
 Plug 'Shougo/echodoc.vim'
 Plug 'kassio/neoterm'
 Plug 'chrisbra/csv.vim'
