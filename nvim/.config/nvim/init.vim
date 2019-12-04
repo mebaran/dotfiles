@@ -29,6 +29,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 
+Plug 'Chiel92/vim-autoformat'
 Plug 'chrisbra/NrrwRgn'
 Plug 'junegunn/goyo.vim'
 Plug 'Shougo/echodoc.vim'
@@ -36,11 +37,11 @@ Plug 'kassio/neoterm'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wsdjeg/FlyGrep.vim' 
+Plug 'cohama/lexima.vim'
+
 Plug 'airblade/vim-gitgutter'  " show git changes to files in gutter
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'cohama/lexima.vim'
-
 Plug 'tyrannicaltoucan/vim-deep-space'
 
 call plug#end()
@@ -119,6 +120,7 @@ set pumheight=5
 let g:LanguageClient_serverCommands = {
     \ 'java': ['jdtls', getcwd()],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'rmarkdown': ['R', '--slave', '-e', 'languageserver::run()'],
     \ 'python': ["pyls"]
     \ }
 let g:LanguageClient_fzfContextMenu = 0
