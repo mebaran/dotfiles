@@ -78,8 +78,20 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"autoformat hotkey
+
+" autoformat hotkey
 noremap <F3> :Autoformat<CR>
+inoremap <F3> <Esc>:Autoformat<CR>
+
+" hardcore mode
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
+noremap <Right> <Nop>
+inoremap <Up>    <Nop>
+inoremap <Down>  <Nop>
+inoremap <Left>  <Nop>
+inoremap <Right> <Nop>
 
 " tabs:
 nnoremap tn :tabnew<Space>
