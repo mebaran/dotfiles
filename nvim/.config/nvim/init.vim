@@ -23,21 +23,20 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
 
 " rmarkdown support
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 
-Plug 'Chiel92/vim-autoformat'
 Plug 'chrisbra/NrrwRgn'
+Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/goyo.vim'
-Plug 'Shougo/echodoc.vim'
 Plug 'kassio/neoterm'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wsdjeg/FlyGrep.vim' 
-Plug 'cohama/lexima.vim'
 
 Plug 'airblade/vim-gitgutter'  " show git changes to files in gutter
 Plug 'vim-airline/vim-airline'
@@ -93,13 +92,6 @@ inoremap <Down>  <Nop>
 inoremap <Left>  <Nop>
 inoremap <Right> <Nop>
 
-" tabs:
-nnoremap tn :tabnew<Space>
-nnoremap tk :tabnext<CR>
-nnoremap tj :tabprev<CR>
-nnoremap th :tabfirst<CR>
-nnoremap tl :tablast<CR>
-
 " buffers
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
@@ -109,19 +101,6 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 set noshowmode
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new line.
-" inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-" uncomment this block if you use vimtex for LaTex
-" autocmd Filetype tex call ncm2#register_source({
-"           \ 'name': 'vimtex',
-"           \ 'priority': 8,
-"           \ 'scope': ['tex'],
-"           \ 'mark': 'tex',
-"           \ 'word_pattern': '\w+',
-"           \ 'complete_pattern': g:vimtex#re#ncm2,
-"           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-"           \ })
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -155,7 +134,7 @@ endfunction()
 
 augroup LSP
   autocmd!
-  autocmd FileType r,python,java call SetLSPShortcuts()
+  autocmd FileType r,rmarkdown,python,java call SetLSPShortcuts()
 augroup END
 
 "Neoterm config
