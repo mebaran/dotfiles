@@ -30,15 +30,13 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
 
-Plug 'Chiel92/vim-autoformat'
 Plug 'chrisbra/NrrwRgn'
+Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/goyo.vim'
-Plug 'Shougo/echodoc.vim'
 Plug 'kassio/neoterm'
 Plug 'chrisbra/csv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wsdjeg/FlyGrep.vim' 
-Plug 'cohama/lexima.vim'
 
 Plug 'airblade/vim-gitgutter'  " show git changes to files in gutter
 Plug 'vim-airline/vim-airline'
