@@ -83,14 +83,14 @@ noremap <F3> :Autoformat<CR>
 inoremap <F3> <Esc>:Autoformat<CR>
 
 " hardcore mode
-noremap <Up>    <Nop>
-noremap <Down>  <Nop>
-noremap <Left>  <Nop>
-noremap <Right> <Nop>
-inoremap <Up>    <Nop>
-inoremap <Down>  <Nop>
-inoremap <Left>  <Nop>
-inoremap <Right> <Nop>
+" noremap <Up>    <Nop>
+" noremap <Down>  <Nop>
+" noremap <Left>  <Nop>
+" noremap <Right> <Nop>
+" inoremap <Up>    <Nop>
+" inoremap <Down>  <Nop>
+" inoremap <Left>  <Nop>
+" inoremap <Right> <Nop>
 
 " buffers
 let g:airline#extensions#tabline#buffer_idx_mode = 1
