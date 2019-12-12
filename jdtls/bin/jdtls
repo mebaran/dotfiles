@@ -7,6 +7,10 @@ if [[ ! -d ~/.jdtls ]]; then
     tar xvzf ~/.jdtls/eclipse-jdtls.tar.gz -C ~/.jdtls
 fi
 
+if [[ -f ~/.jdtls/lombok.jar ]]; then
+    export JAVA_TOOL_OPTIONS="-javaagent:$HOME/.jdtls/lombok.jar"
+fi
+
 java \
     -Declipse.application=org.eclipse.jdt.ls.core.id1 \
     -Dosgi.bundles.defaultStartLevel=4 \
