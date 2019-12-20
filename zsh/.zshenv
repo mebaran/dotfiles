@@ -30,3 +30,6 @@ export R_LIBS_USER=~/.R/3.5
 if [[ -f ~/.sa_config.sh  ]]; then;
     source ~/.sa_config.sh
 fi
+
+# Export Github PAT
+export GITHUB_PAT="bb2290a2b8ad93f32afac07ad8b4fd3ec6495845"
