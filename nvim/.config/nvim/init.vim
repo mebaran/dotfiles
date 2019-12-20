@@ -46,6 +46,7 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 call plug#end()
 
 let mapleader=" "
+let maplocalleader=" "
 
 set number
 set relativenumber

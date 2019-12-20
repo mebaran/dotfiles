@@ -32,4 +32,4 @@ if [[ -f ~/.sa_config.sh  ]]; then;
 fi
 
 # Export Github PAT
-export GITHUB_PAT="bb2290a2b8ad93f32afac07ad8b4fd3ec6495845"
+export GITHUB_PAT="<CONFIGURE HERE>"
