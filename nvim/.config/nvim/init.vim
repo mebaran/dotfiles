@@ -7,12 +7,13 @@ Plug 'ncm2/ncm2-path'
 " Plug 'ncm2/ncm2-jedi' | Plug 'davidhalter/jedi-vim'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 "Plug 'ncm2/ncm2-ultisnips' | Plug 'SirVer/ultisnips'
+Plug 'ncm2/float-preview.nvim'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-"Plug 'ncm2/float-preview.nvim'
+Plug 'ncm2/float-preview.nvim'
 "Plug 'w0rp/ale'
 
 Plug 'tpope/vim-sensible'
@@ -107,16 +108,17 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:ncm2#matcher = 'substrfuzzy'
 set pumheight=5
+let g:float_preview#docked = 0
 
 "Language client coverage
 let g:LanguageClient_serverCommands = {
     \ 'java': ['jdtls', getcwd()],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
     \ 'rmarkdown': ['R', '--slave', '-e', 'languageserver::run()'],
-    \ 'python': ["pyls"]
+    \ 'python': ['pyls']
     \ }
 let g:LanguageClient_fzfContextMenu = 0
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = "CodeLens"
 
 function SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
