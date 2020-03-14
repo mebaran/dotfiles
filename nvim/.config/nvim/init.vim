@@ -23,4 +23,4 @@ call plug#end()
 
 " Themes
 set termguicolors
-colorscheme seoul256 
+colorscheme deus 

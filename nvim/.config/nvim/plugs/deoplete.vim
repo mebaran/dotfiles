@@ -6,10 +6,11 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'ncm2/float-preview.nvim'
 let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
 set shortmess+=c
+set completeopt-=preview
+
+Plug 'ncm2/float-preview.nvim'
 
 " Install additional completion sources (other than LSP configure elsewhere"
 Plug 'wellle/tmux-complete.vim'
