@@ -1,3 +1,4 @@
+" Basics
 set nocompatible
 set expandtab
 set ts=4 sw=4
@@ -6,7 +7,6 @@ set noshowmode
 set signcolumn=yes
 
 " Enable ftype
-
 syntax on
 filetype plugin indent on
 set encoding=UTF-8
