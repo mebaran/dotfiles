@@ -23,4 +23,6 @@ call plug#end()
 
 " Themes
 set termguicolors
-colorscheme deus 
+colorscheme deus
+
+let mapleader=" "
