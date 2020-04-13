@@ -20,9 +20,6 @@ export LIBGL_ALWAYS_INDIRECT=1
 export GDK_SCALE=2
 export GDK_DPI_SCALE=-1
 
-# Configure Virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
-
 # Configure R
 export R_LIBS_USER=~/.R/
 

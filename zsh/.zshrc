@@ -18,6 +18,9 @@ function winpath() {
     wslpath -m $(readlink -f "$1")
 }
 
+# Configure Virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 if [[ -d "$HOME/.sdkman" ]]; then
     export SDKMAN_DIR="$HOME/.sdkman"
