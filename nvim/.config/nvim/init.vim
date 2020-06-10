@@ -24,3 +24,7 @@ call plug#end()
 " Themes
 set termguicolors
 colorscheme deus
+
+" Keybindings
+let mapleader = " "
+tnoremap <Esc> <C-\><C-n>
