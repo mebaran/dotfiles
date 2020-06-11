@@ -5,6 +5,8 @@ set ts=4 sw=4
 set hidden
 set noshowmode
 set signcolumn=yes
+set splitright
+set splitbelow
 
 " Enable ftype
 syntax on
@@ -14,6 +16,14 @@ set encoding=UTF-8
 " Good numbers
 set number relativenumber
 set nu rnu
+
+" Keybindings
+let mapleader = " "
+
+" Split navigation
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w> <C-\><C-n><C-w>
+inoremap <C-w> <Esc><C-w>
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -25,6 +35,3 @@ call plug#end()
 set termguicolors
 colorscheme deus
 
-" Keybindings
-let mapleader = " "
-tnoremap <Esc> <C-\><C-n>
