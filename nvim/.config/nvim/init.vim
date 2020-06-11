@@ -18,7 +18,7 @@ set number relativenumber
 set nu rnu
 
 " Keybindings
-let mapleader = " "
+let mapleader=" "
 
 " Split navigation
 tnoremap <Esc> <C-\><C-n>
