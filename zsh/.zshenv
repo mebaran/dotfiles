@@ -27,3 +27,8 @@ export R_LIBS_USER=~/.R/
 if [[ -f ~/.sa_config.sh  ]]; then;
     source ~/.sa_config.sh
 fi
+
+# Source zshlocal file if exists
+if [[ -f ~/.zshlocal ]]; then;
+    source ~/.zshlocal
+fi
