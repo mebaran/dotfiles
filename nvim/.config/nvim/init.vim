@@ -17,8 +17,12 @@ set encoding=UTF-8
 set number relativenumber
 set nu rnu
 
-" Keybindings
-let mapleader=" "
+" Leader bindings
+let mapleader=","
+let maplocaleader=" "
+
+" Shortcuts
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Split navigation
 tnoremap <Esc> <C-\><C-n>
@@ -30,6 +34,9 @@ call plug#begin('~/.vim/plugged')
 runtime themes.vim
 for f in glob("~/.config/nvim/plugs/*.vim", 0, 1) | exe "source" f | endfor
 call plug#end()
+
+" Load custom lua
+for f in glob("~/.config/nvim/lua/*.lua", 0, 1) | exe "luafile" f | endfor
 
 " Themes
 set termguicolors
