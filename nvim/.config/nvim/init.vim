@@ -35,9 +35,6 @@ runtime themes.vim
 for f in glob("~/.config/nvim/plugs/*.vim", 0, 1) | exe "source" f | endfor
 call plug#end()
 
-" Load custom lua
-for f in glob("~/.config/nvim/lua/*.lua", 0, 1) | exe "luafile" f | endfor
-
 " Themes
 set termguicolors
 colorscheme deus
