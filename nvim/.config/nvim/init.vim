@@ -37,5 +37,5 @@ call plug#end()
 
 " Themes
 set termguicolors
-colorscheme deus
-
+colorscheme forest-night 
+let g:airline_theme = 'forest_night'
