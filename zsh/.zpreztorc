@@ -36,11 +36,13 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'git' \
-  'prompt' \
   'tmux' \
   'python' \
   'ssh' \
-  'fasd'
+  'fasd' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'prompt'
 
 #
 # Autosuggestions
