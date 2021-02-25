@@ -1,0 +1,6 @@
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-textobj-sentence'
+Plug 'reedes/vim-textobj-quote'
+Plug 'reedes/vim-lexical'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
