@@ -37,5 +37,5 @@ call plug#end()
 
 " Themes
 set termguicolors
-let g:airline_theme = 'everforest'
-colorscheme everforest
+let g:airline_theme = 'miramare'
+colorscheme miramare
