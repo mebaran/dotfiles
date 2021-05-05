@@ -35,6 +35,9 @@ runtime themes.vim
 for f in glob("~/.config/nvim/plugs/*.vim", 0, 1) | exe "source" f | endfor
 call plug#end()
 
+"Fix up the terminal
+autocmd TermOpen * setlocal nonumber norelativenumber
+
 "Setup lua
 lua require('lang')
 
