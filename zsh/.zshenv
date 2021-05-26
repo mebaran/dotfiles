@@ -32,3 +32,7 @@ fi
 if [[ -f ~/.zshlocal ]]; then;
     source ~/.zshlocal
 fi
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then;
+    source ~/.nix-profile/etc/profile.d/nix.sh
+fi
