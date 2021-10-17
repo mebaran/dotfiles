@@ -10,13 +10,6 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# Configure WSL X
-if [[ ! -z $WSL_INTEROP ]]; then
-    export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0
-else
-    export DISPLAY=:0.0
-fi
-export LIBGL_ALWAYS_INDIRECT=1
 export GDK_SCALE=2
 export GDK_DPI_SCALE=-1
 
@@ -33,6 +26,6 @@ if [[ -f ~/.zshlocal ]]; then;
     source ~/.zshlocal
 fi
 
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then;
-    source ~/.nix-profile/etc/profile.d/nix.sh
+if [[ -f ~/.cargo/env ]]; then;
+    source ~/.cargo/env
 fi
