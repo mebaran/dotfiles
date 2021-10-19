@@ -26,8 +26,6 @@ require('packer').startup(function()
   use 'tpope/vim-vinegar'
   use 'tpope/vim-sensible'
   
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-  
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   
@@ -60,9 +58,11 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 end)
 
+require('vim_settings')
 require('telescope_settings')
 require('treesitter_settings')
 require('lsp_settings')
+
 -- Gitsigns
 require('gitsigns').setup {
   signs = {
@@ -77,7 +77,6 @@ require('gitsigns').setup {
 --Set statusbar
 require('lualine').setup {
   options = {
-    icons_enabled = true,
     theme = 'solarized_dark',
     section_separators = {'', ''},
     component_separators = {'', ''},
@@ -108,74 +107,3 @@ require('lualine').setup {
 }
 
 
--- No Show
-vim.o.showmode = false
-
---Set tab width and stop
-vim.o.tabstop = 4
-vim.o.shiftwidth = 0
-vim.o.expandtab = true
-
---Incremental live completion (note: this is now a default on master)
-vim.o.inccommand = 'nosplit'
-
---Set highlight on search
-vim.o.hlsearch = false
-
---Make line numbers default
-vim.wo.number = true
-
---Do not save when switching buffers (note: this is now a default on master)
-vim.o.hidden = true
-
---Enable mouse mode
-vim.o.mouse = 'a'
-
---Enable break indent
-vim.o.breakindent = true
-
---Save undo history
-vim.opt.undofile = true
-
---Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
---Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
-
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme OceanicNext]]
-
---Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
---Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-
--- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
-
--- Highlight on yank
-vim.api.nvim_exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-  false
-)
-
---Map blankline
-vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-vim.g.indent_blankline_char_highlight = 'LineNr'
-vim.g.indent_blankline_show_trailing_blankline_indent = false
