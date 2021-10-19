@@ -1,6 +1,10 @@
 -- No Show
 vim.o.showmode = false
 
+-- Split management
+vim.o.splitright = true
+vim.o.splitbelow = true
+
 --Set tab width and stop
 vim.o.tabstop = 4
 vim.o.shiftwidth = 0
@@ -69,3 +73,10 @@ vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
+
+-- Luxurious terminal experience
+vim.api.nvim_set_keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.api.nvim_exec([[
+    autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+]], false)
