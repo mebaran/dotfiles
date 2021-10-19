@@ -77,7 +77,7 @@ require('gitsigns').setup {
 --Set statusbar
 require('lualine').setup {
   options = {
-    theme = 'solarized_dark',
+    theme = 'oceanicnext',
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {}
