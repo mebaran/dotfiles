@@ -33,6 +33,7 @@ require('packer').startup(function()
   use 'joshdick/onedark.vim'
   use 'mhartington/oceanic-next'
   use 'sainnhe/everforest'
+  use 'junegunn/seoul256.vim'
 
   -- Fancier statusline
   use {
@@ -59,6 +60,7 @@ require('packer').startup(function()
 end)
 
 require('vim_settings')
+require('theme')
 require('telescope_settings')
 require('treesitter_settings')
 require('lsp_settings')
@@ -77,7 +79,7 @@ require('gitsigns').setup {
 --Set statusbar
 require('lualine').setup {
   options = {
-    theme = 'oceanicnext',
+    theme = vim.g.theme,
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {}

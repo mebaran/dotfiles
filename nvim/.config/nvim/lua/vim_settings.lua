@@ -18,6 +18,7 @@ vim.o.hlsearch = false
 
 --Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 --Do not save when switching buffers (note: this is now a default on master)
 vim.o.hidden = true
@@ -38,11 +39,6 @@ vim.o.smartcase = true
 --Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
-
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme OceanicNext]]
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
