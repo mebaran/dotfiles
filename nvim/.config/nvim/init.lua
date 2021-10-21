@@ -57,8 +57,10 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip'
-  
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+  -- better buffers
+  use 'famiu/bufdelete.nvim'
 end)
 
 require('vim_settings')
