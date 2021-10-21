@@ -25,7 +25,9 @@ require('packer').startup(function()
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
   use 'tpope/vim-sensible'
-  
+
+  use 'junegunn/gv.vim'
+
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   
