@@ -76,6 +76,9 @@ vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent =
 vim.api.nvim_exec([[
     autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]], false)
+vim.api.nvim_exec([[
+    autocmd TermOpen * setlocal nonumber norelativenumber
+]], false)
 
 vim.api.nvim_set_keymap('n', '<Leader>bd', ':Bdelete<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>bD', ':Bdelete!<CR>', {})

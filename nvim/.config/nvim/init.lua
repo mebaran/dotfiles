@@ -11,9 +11,7 @@ vim.api.nvim_exec(
     autocmd!
     autocmd BufWritePost init.lua PackerCompile
   augroup end
-]],
-  false
-)
+]], false)
 
 local use = require('packer').use
 require('packer').startup(function()
@@ -36,6 +34,7 @@ require('packer').startup(function()
   use 'mhartington/oceanic-next'
   use 'sainnhe/everforest'
   use 'junegunn/seoul256.vim'
+  use 'folke/tokyonight.nvim' 
 
   -- Fancier statusline
   use {
