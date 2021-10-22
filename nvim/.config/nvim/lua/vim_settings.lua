@@ -74,10 +74,13 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.api.nvim_set_keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.api.nvim_exec([[
+  augroup neovim_terminal
+    autocmd!
+    " Enter Terminal-mode (insert) automatically
     autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
-]], false)
-vim.api.nvim_exec([[
-    autocmd TermOpen * setlocal nonumber norelativenumber
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+  augroup END
 ]], false)
 
 vim.api.nvim_set_keymap('n', '<Leader>bd', ':Bdelete<CR>', {})
