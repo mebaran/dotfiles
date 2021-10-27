@@ -28,7 +28,8 @@ require('packer').startup(function()
 
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  
+  use {'nvim-telescope/telescope-fzy-native.nvim', run = 'make' }
+
   -- Themes
   use 'joshdick/onedark.vim'
   use 'mhartington/oceanic-next'
