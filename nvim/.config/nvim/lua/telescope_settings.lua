@@ -10,7 +10,9 @@ require('telescope').setup {
   },
 }
 
-require('telescope').load_extension('fzy_native')
+if jit then
+  require('telescope').load_extension('fzf')
+end
 
 --Add leader shortcuts
 vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
