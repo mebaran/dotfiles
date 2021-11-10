@@ -38,21 +38,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require('sqls').setup{ picker = 'telescope' }
+
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
-
-require('lspconfig').sqls.setup{
-    on_attach = function(client)
-        client.resolved_capabilities.execute_command = true
-        client.commands = require('sqls').commands -- Neovim 0.6+ only
-
-        require('sqls').setup{
-            picker = 'telescope'
-        }
-    end
-}
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
