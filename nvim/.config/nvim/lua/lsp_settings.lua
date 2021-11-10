@@ -1,6 +1,6 @@
 -- LSP settings
 local nvim_lsp = require 'lspconfig'
-local on_attach = function(_, bufnr)
+local lsp_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap = true, silent = true }
@@ -30,15 +30,33 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { 'pyright', 'tsserver', 'r_language_server', 'bashls', 'hls', 'sqls' }
-for _, lsp in ipairs(servers) do
+local servers = { 
+    pyright = lsp_attach, 
+    tsserver = lsp_attach, 
+    r_language_server = lsp_attach, 
+    bashls = lsp_attach, 
+    hls = lsp_attach, 
+    sqls = function(client, buf)
+        client.resolved_capabilities.execute_command = true
+        client.commands = require('sqls').commands -- Neovim 0.6+ only
+        lsp_attach(client, buf)
+        require('sqls').setup{ picker = 'telescope' }
+    end
+}
+for lsp, attach_fn in pairs(servers) do
   nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = attach_fn,
+    capabilities = capabilities
   }
 end
 
-require('sqls').setup{ picker = 'telescope' }
+-- nvim_lsp[lsp].setup {
+--   on_attach = function(client, bufnr)
+--     lsp_attach(_, bufnr)
+--     client.resolved_capabilities.execute_command = true
+--   end
+-- }
+
 
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
