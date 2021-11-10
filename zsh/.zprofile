@@ -46,6 +46,7 @@ path=(
   ~/bin
   ~/.local/bin
   ~/.npm-packages/bin
+  ~/.go/bin
   ~/.ghcup/bin/
   /usr/local/{bin,sbin}
   $path

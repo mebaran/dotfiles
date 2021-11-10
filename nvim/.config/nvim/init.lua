@@ -60,6 +60,7 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'nanotee/sqls.nvim'
 
   -- better buffers
   use 'famiu/bufdelete.nvim'

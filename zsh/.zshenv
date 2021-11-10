@@ -15,6 +15,7 @@ export GDK_DPI_SCALE=-1
 
 # Configure R
 export R_LIBS_USER=~/.R/
+export GOPATH=~/.go
 
 # Configure Sybase
 if [[ -f ~/.sa_config.sh  ]]; then;
@@ -29,3 +30,4 @@ fi
 if [[ -f ~/.cargo/env ]]; then;
     source ~/.cargo/env
 fi
+
