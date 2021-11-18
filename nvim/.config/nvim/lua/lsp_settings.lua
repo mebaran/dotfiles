@@ -4,24 +4,30 @@ local lsp_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+  local nbufmap = function(keys, cmd)
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', keys, cmd, opts)
+  end
+  
+  nbufmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  nbufmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  nbufmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  nbufmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  nbufmap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  nbufmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  nbufmap('<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  nbufmap('<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  nbufmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  nbufmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  nbufmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  nbufmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  nbufmap('<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  nbufmap('[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  nbufmap(']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  nbufmap('<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+  nbufmap('<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
+  nbufmap('<leader>ff', [[<cmd>:Format<CR>]]) 
+  
+  vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
@@ -50,66 +56,48 @@ for lsp, attach_fn in pairs(servers) do
   }
 end
 
--- nvim_lsp[lsp].setup {
---   on_attach = function(client, bufnr)
---     lsp_attach(_, bufnr)
---     client.resolved_capabilities.execute_command = true
---   end
--- }
+-- LspUtil Configuration
+if vim.fn.has('nvim-0.5.1') == 1 then
+    vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+    vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+    vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+    vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+    vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+    vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+    vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+    vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+else
+    local bufnr = vim.api.nvim_buf_get_number(0)
 
+    vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
+        require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
+    end
 
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
+    vim.lsp.handlers['textDocument/references'] = function(_, _, result)
+        require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
+    end
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+    vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
+        require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
 
--- luasnip setup
-local luasnip = require 'luasnip'
+    vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
+        require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
 
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-	{ name = 'path' },
-  },
-}
+    vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
+        require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
+        require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
+    end
+
+    vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
+        require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
+    end
+end

@@ -61,7 +61,11 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'nanotee/sqls.nvim'
+  use 'mfussenegger/nvim-jdtls'
 
+  use 'RishabhRD/popfix'
+  use 'RishabhRD/nvim-lsputils'
+  
   -- better buffers
   use 'famiu/bufdelete.nvim'
 end)
@@ -72,6 +76,7 @@ require('statusline_settings')
 require('telescope_settings')
 require('treesitter_settings')
 require('lsp_settings')
+require('autocomplete_settings')
 
 -- Gitsigns
 require('gitsigns').setup {
