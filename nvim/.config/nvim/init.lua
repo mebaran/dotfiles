@@ -27,7 +27,8 @@ require('packer').startup(function()
   use 'tpope/vim-repeat'
   use 'famiu/bufdelete.nvim'
   use 'junegunn/gv.vim'
-
+  use 'ggandor/lightspeed.nvim'
+  
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   if jit then
@@ -65,8 +66,9 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip'
-  -- use 'RishabhRD/popfix'
-  -- use 'RishabhRD/nvim-lsputils'
+  
+  use 'RishabhRD/popfix'
+  use 'RishabhRD/nvim-lsputils'
 end)
 
 require('vim_settings')
