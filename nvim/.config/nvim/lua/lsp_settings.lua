@@ -43,9 +43,9 @@ local servers = {
     bashls = lsp_attach, 
     hls = lsp_attach, 
     sqls = function(client, buf)
+        lsp_attach(client, buf)
         client.resolved_capabilities.execute_command = true
         client.commands = require('sqls').commands -- Neovim 0.6+ only
-        lsp_attach(client, buf)
         require('sqls').setup{ picker = 'telescope' }
     end
 }

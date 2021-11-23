@@ -23,7 +23,9 @@ require('packer').startup(function()
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-vinegar'
   use 'tpope/vim-sensible'
-
+ 
+  use 'tpope/vim-repeat'
+  use 'famiu/bufdelete.nvim'
   use 'junegunn/gv.vim'
 
   -- UI to select things (files, grep results, open buffers...)
@@ -55,19 +57,16 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'nanotee/sqls.nvim'
+  use 'mfussenegger/nvim-jdtls'
+  
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use 'nanotee/sqls.nvim'
-  use 'mfussenegger/nvim-jdtls'
-
-  use 'RishabhRD/popfix'
-  use 'RishabhRD/nvim-lsputils'
-  
-  -- better buffers
-  use 'famiu/bufdelete.nvim'
+  -- use 'RishabhRD/popfix'
+  -- use 'RishabhRD/nvim-lsputils'
 end)
 
 require('vim_settings')
