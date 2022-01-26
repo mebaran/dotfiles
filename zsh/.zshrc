@@ -20,3 +20,7 @@ function winpath() {
 
 # Configure Virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=`which python3`
+
+if ! [ -z $KITTY_PID ]; then;
+    alias ssh="kitty +kitten ssh"
+fi
