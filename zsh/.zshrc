@@ -21,10 +21,6 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper    
 
-    zgenom prezto
-    zgenom prezto editor key-bindings 'vi'
-    zgenom prezto history-substring-search
-
     # save all to init script
     zgenom save
 
