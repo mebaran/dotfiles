@@ -14,15 +14,21 @@ if ! zgenom saved; then;
     # ohmyzsh plugins
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/aliases
+    zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
-    zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper    
 
     zgenom prezto
-    zgenom prezto fasd 
-    
+    zgenom prezto fasd
+    zgenom prezto history-substring-search
+    zgenom prezto editor key-bindings 'vi'
+
+    zgenom load supercrabtree/k
+
+    zgenom ohmyzsh themes/steeef
+
     # save all to init script
     zgenom save
 
@@ -37,7 +43,7 @@ if ! zgenom saved; then;
 fi
 
 # Extra env vars for interactive computing
+export AWS_PROFILE="fastpay"
 export VIRTUALENVWRAPPER_PYTHON="python3"
 
 source "$HOME/.zsh_aliases"
-eval "$(starship init zsh)"
