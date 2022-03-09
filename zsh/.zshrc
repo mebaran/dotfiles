@@ -21,6 +21,7 @@ if ! zgenom saved; then;
 
     zgenom prezto
     zgenom prezto fasd
+    
     # save all to init script
     zgenom save
 
