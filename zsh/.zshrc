@@ -14,13 +14,15 @@ if ! zgenom saved; then;
     # ohmyzsh plugins
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/aliases
-    zgenom ohmyzsh plugins/fasd
     zgenom ohmyzsh plugins/gitignore
     zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper    
 
+    zgenom prezto
+    zgenom prezto fasd 
+    
     # save all to init script
     zgenom save
 
