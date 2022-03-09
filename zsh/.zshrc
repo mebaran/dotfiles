@@ -8,7 +8,6 @@ zgenom autoupdate
 
 if ! zgenom saved; then;
     # completions   
-    zgenom load zsh-users/zsh-syntax-highlighting
     zgenom load zsh-users/zsh-completions
     
     # ohmyzsh plugins
