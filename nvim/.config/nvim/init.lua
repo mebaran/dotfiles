@@ -41,6 +41,7 @@ require('packer').startup(function()
   use 'sainnhe/everforest'
   use 'junegunn/seoul256.vim'
   use 'folke/tokyonight.nvim' 
+  use 'bluz71/vim-nightfly-guicolors'
 
   -- Fancier statusline
   use {
