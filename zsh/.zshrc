@@ -7,24 +7,27 @@ source "${HOME}/.zgenom/zgenom.zsh"
 zgenom autoupdate
 
 if ! zgenom saved; then;
-    # completions   
-    zgenom load zsh-users/zsh-completions
     
     # ohmyzsh plugins
     zgenom ohmyzsh
+    zgenom ohmyzsh plugins/ag
     zgenom ohmyzsh plugins/aliases
+    zgenom ohmyzsh plugins/fasd
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
+    zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/ssh-agent
-    zgenom ohmyzsh plugins/virtualenvwrapper    
-
-    zgenom prezto
-    zgenom prezto fasd
-    zgenom prezto history-substring-search
-    zgenom prezto editor key-bindings 'vi'
-
+    zgenom ohmyzsh plugins/virtualenvwrapper
+    
     zgenom load supercrabtree/k
+
+    # completions   
+    zgenom load marlonrichert/zsh-autocomplete
+    zgenom load zsh-users/zsh-completions
+    zstyle ':autocomplete:*' widget-style menu-select
+    zstyle ':autocomplete:*' recent-dirs fasd
+    zstyle ':autocomplete:*' min-input 1
 
     zgenom ohmyzsh themes/steeef
 
@@ -42,6 +45,7 @@ if ! zgenom saved; then;
 fi
 
 # Extra env vars for interactive computing
+unsetopt AUTO_CD
 export AWS_PROFILE="fastpay"
 export VIRTUALENVWRAPPER_PYTHON="python3"
 
