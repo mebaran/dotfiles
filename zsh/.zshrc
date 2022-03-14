@@ -45,7 +45,7 @@ fi
 unsetopt AUTO_CD
 zstyle ':autocomplete:*' widget-style menu-select
 zstyle ':autocomplete:*' recent-dirs fasd
-zstyle ':autocomplete:*' min-input 1
+zstyle ':autocomplete:*' min-input 100
 export AWS_PROFILE="fastpay"
 export VIRTUALENVWRAPPER_PYTHON="python3"
 
