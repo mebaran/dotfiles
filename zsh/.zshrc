@@ -25,9 +25,6 @@ if ! zgenom saved; then;
     # completions   
     zgenom load marlonrichert/zsh-autocomplete
     zgenom load zsh-users/zsh-completions
-    zstyle ':autocomplete:*' widget-style menu-select
-    zstyle ':autocomplete:*' recent-dirs fasd
-    zstyle ':autocomplete:*' min-input 1
 
     zgenom ohmyzsh themes/steeef
 
@@ -46,6 +43,9 @@ fi
 
 # Extra env vars for interactive computing
 unsetopt AUTO_CD
+zstyle ':autocomplete:*' widget-style menu-select
+zstyle ':autocomplete:*' recent-dirs fasd
+zstyle ':autocomplete:*' min-input 1
 export AWS_PROFILE="fastpay"
 export VIRTUALENVWRAPPER_PYTHON="python3"
 
