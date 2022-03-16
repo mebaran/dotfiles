@@ -10,8 +10,8 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Rust setup
-if [[ -f $HOME/.cargo/env ]]; then
-    source "$HOME/.cargo/env"
+if [[ -d $HOME/.cargo/bin ]]; then
+    path=("$HOME/.cargo/bin" $path)
 fi
 
 # Go Setup
