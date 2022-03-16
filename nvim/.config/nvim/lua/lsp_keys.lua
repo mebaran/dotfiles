@@ -6,6 +6,9 @@ function M.lsp_keys(_, bufnr)
     local opts = {noremap = true, silent = true}
     local nbufmap = function(keys, cmd)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', keys, cmd, opts)
+    end 
+    local vbufmap = function(keys, cmd)
+        vim.api.nvim_buf_set_keymap(bufnr, 'v', keys, cmd, opts)
     end
 
     nbufmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -30,9 +33,7 @@ function M.lsp_keys(_, bufnr)
             [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
     nbufmap('<leader>ff', [[<cmd>:Format<CR>]])
 
-    vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca',
-                                '<cmd>lua vim.lsp.buf.range_code_action()<CR>',
-                                opts)
+    vbufmap(bufnr, 'v', '<leader>ca','<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
