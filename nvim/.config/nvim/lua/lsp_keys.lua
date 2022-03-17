@@ -33,7 +33,7 @@ function M.lsp_keys(_, bufnr)
             [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
     nbufmap('<leader>ff', [[<cmd>:Format<CR>]])
 
-    vbufmap(bufnr, 'v', '<leader>ca','<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+    vbufmap('<leader>ca','<cmd>lua vim.lsp.buf.range_code_action()<CR>')
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
