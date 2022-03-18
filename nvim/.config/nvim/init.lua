@@ -70,7 +70,10 @@ require('packer').startup(function()
     })
     use({
         'simrat39/rust-tools.nvim',
-        config = function() require('rust-tools').setup({}) end
+        config = function()
+            local keymap = require('lsp_keys').lsp_keys
+            require('rust-tools').setup({server = {on_attach = keymap}})
+        end
     })
 
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
