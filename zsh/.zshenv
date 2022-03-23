@@ -24,3 +24,8 @@ fi
 if [[ -d $HOME/.ghcup/bin ]]; then
     path=("$HOME/.ghcup/bin" $path)
 fi
+
+#Solana setup
+if [[ -d $HOME/.local/share/solana/install/active_release/bin ]]; then;
+    path=("$HOME/.local/share/solana/install/active_release/bin" $path)
+fi
