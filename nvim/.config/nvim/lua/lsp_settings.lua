@@ -13,6 +13,7 @@ local servers = {
     r_language_server = lsp_attach,
     bashls = lsp_attach,
     hls = lsp_attach,
+    volar = lsp_attach,
     sqls = function(client, buf)
         lsp_attach(client, buf)
         client.resolved_capabilities.execute_command = true
@@ -23,6 +24,11 @@ local servers = {
 for lsp, attach_fn in pairs(servers) do
     nvim_lsp[lsp].setup {on_attach = attach_fn, capabilities = capabilities}
 end
+
+--Volar Configuration
+require'lspconfig'.volar.setup{
+    filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
 
 -- LspUtil Configuration
 if vim.fn.has('nvim-0.5.1') == 1 then

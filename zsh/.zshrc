@@ -17,9 +17,11 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/gitignore
     zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
+    zgenom ohmyzsh plugins/nvm
+    zgenom ohmyzsh plugins/npm
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
-    
+
     zgenom load supercrabtree/k
     zgenom load unixorn/autoupdate-zgenom
 
