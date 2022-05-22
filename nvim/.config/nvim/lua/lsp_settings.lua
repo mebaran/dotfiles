@@ -8,6 +8,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
 local servers = {
+    prismals = lsp_attach,
     pyright = lsp_attach,
     tsserver = lsp_attach,
     r_language_server = lsp_attach,
@@ -112,7 +113,8 @@ end
 null_ls = require('null-ls')
 null_ls.setup({
     sources = {
-        null_ls.builtins.diagnostics.flake8, null_ls.builtins.formatting.isort,
+        null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.autopep8
     }
 })

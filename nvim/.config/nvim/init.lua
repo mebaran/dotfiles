@@ -24,8 +24,9 @@ require('packer').startup(function()
     use 'tpope/vim-unimpaired'
     use 'tpope/vim-vinegar'
     use 'tpope/vim-sensible'
-
     use 'tpope/vim-repeat'
+    use 'tpope/vim-surround'
+
     use 'famiu/bufdelete.nvim'
     use 'junegunn/gv.vim'
     use 'ggandor/lightspeed.nvim'
@@ -75,6 +76,7 @@ require('packer').startup(function()
             require('rust-tools').setup({server = {on_attach = keymap}})
         end
     })
+    use 'pantharshit00/vim-prisma'
 
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp'

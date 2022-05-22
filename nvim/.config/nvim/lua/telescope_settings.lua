@@ -21,3 +21,4 @@ nbufmap('<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]
 nbufmap('<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]])
 nbufmap('<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]])
 nbufmap('<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]]) 
+nbufmap('<leader>"', [[<cmd>lua require('telescope.builtin').registers()<CR>]]) 
