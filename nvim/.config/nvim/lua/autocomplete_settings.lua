@@ -7,7 +7,12 @@ local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-    snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
+    completion = {
+        keyword_length = 3
+    }, 
+    snippet = {
+        expand = function(args) luasnip.lsp_expand(args.body) end
+    },
     mapping = {
         ['<Up>'] = cmp.mapping.select_prev_item(),
         ['<Down>'] = cmp.mapping.select_next_item(),
@@ -40,5 +45,9 @@ cmp.setup {
             end
         end
     },
-    sources = {{name = 'nvim_lsp'}, {name = 'luasnip'}, {name = 'path'}}
+    sources = {
+        {name = 'nvim_lsp'},
+        {name = 'luasnip'},
+        {name = 'path'}
+    }
 }
