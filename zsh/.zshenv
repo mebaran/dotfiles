@@ -30,6 +30,11 @@ if [[ -d $HOME/.local/share/solana/install/active_release/bin ]]; then;
     path=("$HOME/.local/share/solana/install/active_release/bin" $path)
 fi
 
+#Dotnet Tool setup
 if [[ -d $HOME/.dotnet/tools ]]; then;
     path=("$HOME/.dotnet/tools" $path)
+fi
+
+if [[ -d $HOME/.npm-packages ]]; then;
+    path=("$HOME/.npm-packages/bin" $path)
 fi

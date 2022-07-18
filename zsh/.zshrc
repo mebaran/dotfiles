@@ -16,6 +16,7 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/fasd
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
+    zgenom ohmyzsh plugins/history
     zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/nvm
