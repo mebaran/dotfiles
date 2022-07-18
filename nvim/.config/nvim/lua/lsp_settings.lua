@@ -15,11 +15,9 @@ local servers = {
     bashls = lsp_attach,
     hls = lsp_attach,
     volar = lsp_attach,
-    sqls = function(client, buf)
-        lsp_attach(client, buf)
-        client.resolved_capabilities.execute_command = true
-        client.commands = require('sqls').commands -- Neovim 0.6+ only
-        require('sqls').setup {picker = 'telescope'}
+    sqls = function(client, bufnr)
+        lsp_attach(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
     end
 }
 for lsp, attach_fn in pairs(servers) do
