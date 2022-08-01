@@ -1,24 +1,16 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
-local indent = 2
+local indent = 4
 
 cmd([[
 	filetype plugin indent on
 ]])
 
-local augroup_name = 'CosmicNvimEditor'
-local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', {
-  command = [[%s/\s\+$//e]],
-  group = group,
-})
-
 g.mapleader = ' '
 
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
-opt.clipboard = 'unnamedplus'
 opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
@@ -44,12 +36,12 @@ opt.laststatus = 2
 opt.lazyredraw = true
 opt.list = true
 opt.listchars = {
-  tab = '❘-',
-  trail = '·',
-  lead = '·',
-  extends = '»',
-  precedes = '«',
-  nbsp = '×',
+    tab = '❘-',
+    trail = '·',
+    lead = '·',
+    extends = '»',
+    precedes = '«',
+    nbsp = '×',
 }
 opt.mouse = 'a'
 opt.number = true

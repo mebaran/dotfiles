@@ -1,17 +1,7 @@
-if vim.fn.has('nvim-0.8') == 0 then
-  error('Need Neovim v0.8+ in order to run Cosmic!')
-end
+require('editor')
 
-do
-  local ok, _ = pcall(require, 'impatient')
+-- Register plugins
 
-  if not ok then
-    vim.notify('impatient.nvim not installed', vim.log.levels.WARN)
-  end
-end
-
-local ok, err = pcall(require, 'cosmic')
-
-if not ok then
-  error(('Error loading core...\n\n%s'):format(err))
-end
+local paq = require("paq") 
+local plugins = require('plugins')
+paq(plugins)
