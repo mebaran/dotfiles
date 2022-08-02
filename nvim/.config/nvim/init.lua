@@ -1,7 +1,16 @@
+-- Editor setup
 require('editor')
 
--- Register plugins
+-- Plugins setup
+require('plugins')
 
-local paq = require("paq") 
-local plugins = require('plugins')
-paq(plugins)
+-- Key map setup
+require('keymap')
+
+-- Setup theme
+require('theme')
+
+-- Setup LSP
+require('lsp')
+
+

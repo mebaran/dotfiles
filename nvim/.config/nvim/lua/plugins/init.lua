@@ -1,7 +1,10 @@
-return {
+require('paq') {
+    'savq/paq-nvim',
     'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter',
 
      -- LSP Support
+    'williamboman/nvim-lsp-installer',
     'VonHeikemen/lsp-zero.nvim',
     'neovim/nvim-lspconfig',
 
@@ -18,6 +21,7 @@ return {
     'rafamadriz/friendly-snippets',
 
     -- Languages
+    'jose-elias-alvarez/null-ls.nvim',
     'ionide/ionide-vim',
     'mfussenegger/nvim-jdtls',
 
@@ -29,5 +33,24 @@ return {
     'tpope/vim-vinegar',
     'tpope/vim-unimpaired',
 
+    --Telescope
+    'nvim-telescope/telescope.nvim',
+    {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+
+    --Utils
+    'numToStr/Comment.nvim',
+    'lukas-reineke/indent-blankline.nvim',
+    'voldikss/vim-floaterm',
+
     -- Themes
+    {'rose-pine/neovim', as='rose-pine'},
+    {'folke/tokyonight.nvim', branch='main'},
 }
+
+-- Custom setups
+require('plugins.telescope_setup')
+require('plugins.ionide_setup')
+
+-- Standard setups
+require('indent_blankline').setup()
+require('Comment').setup()

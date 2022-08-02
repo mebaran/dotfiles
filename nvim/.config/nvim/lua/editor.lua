@@ -34,15 +34,15 @@ opt.wildmenu = true
 opt.cursorline = true
 opt.laststatus = 2
 opt.lazyredraw = true
-opt.list = true
-opt.listchars = {
-    tab = '❘-',
-    trail = '·',
-    lead = '·',
-    extends = '»',
-    precedes = '«',
-    nbsp = '×',
-}
+-- opt.list = true
+-- opt.listchars = {
+--     tab = '❘-',
+--     trail = '·',
+--     lead = '·',
+--     extends = '»',
+--     precedes = '«',
+--     nbsp = '×',
+-- }
 opt.mouse = 'a'
 opt.number = true
 opt.rnu = true
