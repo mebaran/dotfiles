@@ -54,3 +54,4 @@ require('plugins.ionide_setup')
 -- Standard setups
 require('indent_blankline').setup()
 require('Comment').setup()
+require('gitsigns').setup()

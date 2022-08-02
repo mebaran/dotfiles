@@ -12,5 +12,3 @@ require('theme')
 
 -- Setup LSP
 require('lsp')
-
-
