@@ -22,7 +22,6 @@ require('paq') {
 
     -- Languages
     'jose-elias-alvarez/null-ls.nvim',
-    'ionide/ionide-vim',
     'mfussenegger/nvim-jdtls',
 
     -- Git
@@ -42,6 +41,8 @@ require('paq') {
     'lukas-reineke/indent-blankline.nvim',
     'voldikss/vim-floaterm',
 
+    -- Status bar
+    'feline-nvim/feline.nvim',
     -- Themes
     {'rose-pine/neovim', as='rose-pine'},
     {'folke/tokyonight.nvim', branch='main'},
@@ -49,8 +50,10 @@ require('paq') {
 
 -- Custom setups
 require('plugins.telescope_setup')
-require('plugins.ionide_setup')
+require('plugins.feline_setup')
+require('plugins.null_ls_setup')
 
 -- Standard setups
+require('gitsigns').setup()
 require('indent_blankline').setup()
 require('Comment').setup()
