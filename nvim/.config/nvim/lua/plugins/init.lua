@@ -55,6 +55,6 @@ require('plugins.null_ls_setup')
 
 -- Standard setups
 require('gitsigns').setup()
+require('neogit').setup()
 require('indent_blankline').setup()
 require('Comment').setup()
-require('gitsigns').setup()
