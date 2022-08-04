@@ -2,6 +2,7 @@ require('paq') {
     'savq/paq-nvim',
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
+    'kyazdani42/nvim-web-devicons',
 
      -- LSP Support
     'williamboman/nvim-lsp-installer',
@@ -23,6 +24,7 @@ require('paq') {
     -- Languages
     'jose-elias-alvarez/null-ls.nvim',
     'mfussenegger/nvim-jdtls',
+    'ionide/ionide-vim',
 
     -- Git
     'lewis6991/gitsigns.nvim',
@@ -41,6 +43,7 @@ require('paq') {
     'numToStr/Comment.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'voldikss/vim-floaterm',
+    'tversteeg/registers.nvim',
 
     -- Status bar
     'feline-nvim/feline.nvim',
@@ -53,6 +56,7 @@ require('paq') {
 require('plugins.telescope_setup')
 require('plugins.feline_setup')
 require('plugins.null_ls_setup')
+require('plugins.ionide_setup')
 
 -- Standard setups
 require('gitsigns').setup()
