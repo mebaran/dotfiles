@@ -27,6 +27,7 @@ require('paq') {
     -- Git
     'lewis6991/gitsigns.nvim',
     'TimUntersberger/neogit',
+    'sindrets/diffview.nvim',
 
     -- Tpope
     'tpope/vim-vinegar',
