@@ -9,6 +9,3 @@ require('keymap')
 
 -- Setup theme
 require('theme')
-
--- Setup LSP
-require('lsp')
