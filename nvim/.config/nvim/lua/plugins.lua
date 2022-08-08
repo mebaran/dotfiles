@@ -46,21 +46,24 @@ require('paq') {
     'tversteeg/registers.nvim',
 
     -- Status bar
-    'feline-nvim/feline.nvim',
+    'nvim-lualine/lualine.nvim',
+
     -- Themes
     {'rose-pine/neovim', as='rose-pine'},
     {'folke/tokyonight.nvim', branch='main'},
+    {"catppuccin/nvim", as="catppuccin"},
 }
 
 -- Standard setups
 require('neogit').setup()
 require('indent_blankline').setup()
 require('Comment').setup()
+require('catppuccin').setup()
 
 -- Custom setups
 require('plugins.lsp_setup')
 require('plugins.telescope_setup')
-require('plugins.feline_setup')
+require('plugins.lualine_setup')
 require('plugins.null_ls_setup')
 require('plugins.ionide_setup')
 require('plugins.gitsigns_setup')
