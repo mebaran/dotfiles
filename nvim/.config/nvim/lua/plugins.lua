@@ -52,6 +52,11 @@ require('paq') {
     {'folke/tokyonight.nvim', branch='main'},
 }
 
+-- Standard setups
+require('neogit').setup()
+require('indent_blankline').setup()
+require('Comment').setup()
+
 -- Custom setups
 require('plugins.lsp_setup')
 require('plugins.telescope_setup')
@@ -59,8 +64,4 @@ require('plugins.feline_setup')
 require('plugins.null_ls_setup')
 require('plugins.ionide_setup')
 require('plugins.gitsigns_setup')
-
--- Standard setups
-require('neogit').setup()
-require('indent_blankline').setup()
-require('Comment').setup()
+require('plugins.floaterm_setup')

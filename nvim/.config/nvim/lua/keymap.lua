@@ -3,7 +3,14 @@ local map = function(mode, keys, cmd)
 end
 
 -- Telescope
-map('n', '<leader>ff', ':Telescope find_files<cr>')
+local project_files = function()
+    local opts = {} -- define here if you want to define something
+    local ok = pcall(require('telescope.builtin').git_files, opts)
+    if not ok then
+      require('telescope.builtin').find_files(opts)
+    end
+end
+map('n', '<leader>ff', project_files)
 map('n', '<leader>fg', ':Telescope git_files<cr>')
 map('n', '<leader>fk', ':Telescope buffers<cr>')
 map('n', '<leader>fs', ':Telescope live_grep<cr>')
