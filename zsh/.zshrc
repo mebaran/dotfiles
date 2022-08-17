@@ -37,10 +37,10 @@ if ! zgenom saved; then;
     # save all to init script
     zgenom save
 
-    # Compile your zsh files
-    zgenom compile "$HOME/.zprofile"
-    zgenom compile "$HOME/.zshrc"
-    zgenom compile "$HOME/.zshenv"
+    # # Compile your zsh files
+    # zgenom compile "$HOME/.zprofile"
+    # zgenom compile "$HOME/.zshrc"
+    # zgenom compile "$HOME/.zshenv"
 
     # You can perform other "time consuming" maintenance tasks here as well.
     # If you use `zgenom autoupdate` you're making sure it gets
