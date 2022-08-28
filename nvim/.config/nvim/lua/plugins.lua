@@ -44,6 +44,8 @@ require('paq') {
     'lukas-reineke/indent-blankline.nvim',
     'voldikss/vim-floaterm',
     'tversteeg/registers.nvim',
+    "windwp/nvim-autopairs",
+    "windwp/nvim-ts-autotag",
 
     -- Status bar
     'nvim-lualine/lualine.nvim',
@@ -59,6 +61,8 @@ require('neogit').setup()
 require('indent_blankline').setup()
 require('Comment').setup()
 require('catppuccin').setup()
+require('nvim-autopairs').setup()
+require('nvim-ts-autotag').setup()
 
 -- Custom setups
 require('plugins.lsp_setup')

@@ -17,7 +17,6 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
     zgenom ohmyzsh plugins/history
-    zgenom ohmyzsh plugins/history-substring-search
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/nvm
     zgenom ohmyzsh plugins/npm
@@ -51,10 +50,14 @@ fi
 
 # Extra env vars for interactive computing
 unsetopt AUTO_CD
+
+# Extra completions
+# Bun
+[ -s "/home/mebaran/.bun/_bun" ] && source "/home/mebaran/.bun/_bun"
+
 zstyle ':autocomplete:*' widget-style menu-select
 zstyle ':autocomplete:*' recent-dirs fasd
 zstyle ':autocomplete:*' min-input 100
-export VIRTUALENVWRAPPER_PYTHON="python3"
 
 source "$HOME/.zsh_aliases"
 if [[ -f "$HOME/.zsh_local" ]]; then;

@@ -38,3 +38,9 @@ fi
 if [[ -d $HOME/.npm-packages ]]; then;
     path=("$HOME/.npm-packages/bin" $path)
 fi
+
+#Bun setup (for the all in one Javascript distro)
+if [[ -d $HOME/.bun ]]; then;
+    export BUN_INSTALL="$HOME/.bun"
+    path=("$BUN_INSTALL/bin" $path)
+fi
