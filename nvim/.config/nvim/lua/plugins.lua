@@ -63,6 +63,7 @@ require('Comment').setup()
 require('catppuccin').setup()
 require('nvim-autopairs').setup()
 require('nvim-ts-autotag').setup()
+require('registers').setup()
 
 -- Custom setups
 require('plugins.lsp_setup')
