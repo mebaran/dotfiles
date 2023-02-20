@@ -5,7 +5,8 @@ require('paq') {
     'kyazdani42/nvim-web-devicons',
 
      -- LSP Support
-    'williamboman/nvim-lsp-installer',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
     'VonHeikemen/lsp-zero.nvim',
     'neovim/nvim-lspconfig',
 
