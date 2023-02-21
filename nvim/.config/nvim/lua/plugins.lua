@@ -25,7 +25,6 @@ require('paq') {
     -- Languages
     'jose-elias-alvarez/null-ls.nvim',
     'mfussenegger/nvim-jdtls',
-    'ionide/ionide-vim',
 
     -- Git
     'lewis6991/gitsigns.nvim',
@@ -65,12 +64,20 @@ require('catppuccin').setup()
 require('nvim-autopairs').setup()
 require('nvim-ts-autotag').setup()
 require('registers').setup()
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
 
 -- Custom setups
 require('plugins.lsp_setup')
 require('plugins.telescope_setup')
 require('plugins.lualine_setup')
 require('plugins.null_ls_setup')
-require('plugins.ionide_setup')
 require('plugins.gitsigns_setup')
 require('plugins.floaterm_setup')
