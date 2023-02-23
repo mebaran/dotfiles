@@ -1,0 +1,13 @@
+{
+  "floaterm": { "branch": "master", "commit": "ca44a13a379d9af75092bc2fe2efee8c5248e876" },
+  "gitsigns.nvim": { "branch": "main", "commit": "f388995990aba04cfdc7c3ab870c33e280601109" },
+  "lazy.nvim": { "branch": "main", "commit": "8077428e63feb0f3bf795d53b23ba1695b28ab0e" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "93e58e100f37ef4fb0f897deeed20599dae9d128" },
+  "mason.nvim": { "branch": "main", "commit": "01dfdfd36be77cb1195b60d580315bf4e2d8e62c" },
+  "mini.nvim": { "branch": "main", "commit": "2bfb0f3e2f2fcbcc57bdf9e051f9fc6f2f5b79ba" },
+  "nvim-lspconfig": { "branch": "master", "commit": "69e2fe3d638566a812c39bc4ea1980f7b833e2fc" },
+  "nvim-treesitter": { "branch": "master", "commit": "f8595b13bff62d5c64d54840e16678b9ad843620" },
+  "nvim-web-devicons": { "branch": "master", "commit": "4709a504d2cd2680fb511675e64ef2790d491d36" },
+  "registers": { "branch": "main", "commit": "2d08fffeb8533d3678bd796010c13c7fa2534263" },
+  "vim-vinegar": { "branch": "master", "commit": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6" }
+}
