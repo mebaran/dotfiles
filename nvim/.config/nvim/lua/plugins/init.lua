@@ -3,7 +3,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     {
         'nvim-treesitter/nvim-treesitter',
-        run=':TSUpdate'
+        run = ':TSUpdate'
     },
     {
 	    "tversteeg/registers.nvim",
@@ -13,15 +13,6 @@ return {
 		    { "<C-R>", mode = "i" }
 	    },
 	    cmd = "Registers",
-    },
-    {
-        "williamboman/mason.nvim",
-        config=true,
-        lazy=false
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config=true
-    },
-    "neovim/nvim-lspconfig",
+        config = true
+    }
 }
