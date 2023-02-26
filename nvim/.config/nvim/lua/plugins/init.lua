@@ -14,5 +14,11 @@ return {
 	    },
 	    cmd = "Registers",
         config = true
+    },
+    {
+        {
+            'stevearc/oil.nvim',
+            config = true
+        }
     }
 }

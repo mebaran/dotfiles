@@ -6,6 +6,9 @@ local function lsp_zero_setup ()
         suggest_lsp_servers = false,
     })
 
+    -- Snippet setup
+    require("luasnip.loaders.from_vscode").lazy_load()
+
     -- (Optional) Configure lua language server for neovim
     lsp.nvim_workspace()
     lsp.setup()
@@ -32,8 +35,11 @@ return {
         {'folke/trouble.nvim'},
 
         -- Snippets
-        {'L3MON4D3/LuaSnip'},             -- Required
-        {'rafamadriz/friendly-snippets'}, -- Optional
+        {
+            'L3MON4D3/LuaSnip',
+            build = 'make install_jsregexp'
+        },
+        {'rafamadriz/friendly-snippets'} -- Optional
     },
     config = lsp_zero_setup
 }
