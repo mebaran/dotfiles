@@ -1,4 +1,4 @@
-lsp_zero_setup = function ()
+local function lsp_zero_setup ()
     local lsp = require('lsp-zero').preset({
         name = 'minimal',
         set_lsp_keymaps = true,
@@ -27,6 +27,9 @@ return {
         {'hrsh7th/cmp-path'},         -- Optional
         {'saadparwaiz1/cmp_luasnip'}, -- Optional
         {'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+        -- LSP diagnostics UI
+        {'folke/trouble.nvim'},
 
         -- Snippets
         {'L3MON4D3/LuaSnip'},             -- Required
