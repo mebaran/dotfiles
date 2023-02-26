@@ -1,12 +1,11 @@
 return {
-    "tpope/vim-vinegar",
-    "nvim-tree/nvim-web-devicons",
+    'nvim-tree/nvim-web-devicons',
     {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     },
     {
-	    "tversteeg/registers.nvim",
+	    'tversteeg/registers.nvim',
 	    name = "registers",
 	    keys = {
 		    { "\"",    mode = { "n", "v" } },
@@ -18,7 +17,15 @@ return {
     {
         {
             'stevearc/oil.nvim',
-            config = true
+            keys = { "-", mode = { "n" } },
+            cmd = "Oil",
+            config = function ()
+                require('oil').setup()
+                vim.keymap.set("n", "-", require("oil").open)
+            end
         }
+    },
+    {
+        'kevinhwang91/nvim-bqf'
     }
 }

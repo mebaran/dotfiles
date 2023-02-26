@@ -10,12 +10,7 @@ local function mini_setup()
     rs('mini.jump2d')
     rs('mini.pairs')
     rs('mini.starter')
-    rs('mini.statusline', {
-        set_vim_settings = false,
-        laststatus = 3
-    })
     rs('mini.surround')
-    rs('mini.tabline')
     rs('mini.comment')
 end
 
