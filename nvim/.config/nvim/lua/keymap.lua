@@ -7,7 +7,7 @@ local project_files = function()
     local opts = {} -- define here if you want to define something
     local ok = pcall(require('telescope.builtin').git_files, opts)
     if not ok then
-      require('telescope.builtin').find_files(opts)
+        require('telescope.builtin').find_files(opts)
     end
 end
 map('n', '<leader>ff', project_files)
@@ -43,7 +43,6 @@ map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
-
 
 -- Terminal
 map('n', '<C-l>', ':FloatermToggle<CR>')

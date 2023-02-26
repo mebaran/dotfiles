@@ -19,4 +19,10 @@ require("lazy").setup("plugins")
 require('keymap')
 
 -- Theme
-vim.cmd([[colorscheme minicyan]])
+-- vim.cmd([[colorscheme minicyan]])
+require('nebulous').setup({
+    variant = 'nova'
+})
+require('lualine').setup({
+    theme = 'nebulous'
+})
