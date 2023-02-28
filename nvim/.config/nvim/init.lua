@@ -13,16 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 require('editor')
 
 -- Plugins
-require("lazy").setup("plugins")
+require('lazy').setup('plugins')
 
 -- Key map setup
 require('keymap')
 
--- Theme
--- vim.cmd([[colorscheme minicyan]])
-require('nebulous').setup({
-    variant = 'nova'
-})
-require('lualine').setup({
-    theme = 'nebulous'
-})
+vim.cmd([[colorscheme forestbones]])

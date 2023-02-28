@@ -14,18 +14,5 @@ return {
 	    cmd = "Registers",
         config = true
     },
-    {
-        {
-            'stevearc/oil.nvim',
-            keys = { "-", mode = { "n" } },
-            cmd = "Oil",
-            config = function ()
-                require('oil').setup()
-                vim.keymap.set("n", "-", require("oil").open)
-            end
-        }
-    },
-    {
-        'kevinhwang91/nvim-bqf'
-    }
+    'kevinhwang91/nvim-bqf'
 }
