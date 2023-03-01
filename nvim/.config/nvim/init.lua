@@ -18,4 +18,4 @@ require('lazy').setup('plugins')
 -- Key map setup
 require('keymap')
 
-vim.cmd([[colorscheme forestbones]])
+vim.cmd([[colorscheme seoulbones]])

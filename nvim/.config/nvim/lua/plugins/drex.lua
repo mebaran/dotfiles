@@ -6,12 +6,19 @@ local function drex_vinegar ()
     vim.keymap.set('n', '~', '<CMD>Drex ~<CR>', {})
     -- open parent DREX buffer and focus current file
     vim.keymap.set('n', '-', function()
-        local path = vim.fn.expand('%:p')
-        if path == '' then
-            drex.open_directory_buffer() -- open at cwd
+        if vim.bo.filetype == 'drex' then
+            local path = vim.fn.expand('%:h:s?drex://??')
+            local parent = vim.fn.fnamemodify(path, ':h')
+            print(string.format('Minus from Drex: %s', parent))
+            drex.open_directory_buffer(parent)
         else
-            drex.open_directory_buffer(vim.fn.fnamemodify(path, ':h'))
-            elements.focus_element(0, path)
+            local path = vim.fn.expand('%:h')
+            if path == '' then
+                drex.open_directory_buffer() -- open at cwd
+            else
+                drex.open_directory_buffer(vim.fn.fnamemodify(path, ':h'))
+                elements.focus_element(0, path)
+            end
         end
     end, {})
 
