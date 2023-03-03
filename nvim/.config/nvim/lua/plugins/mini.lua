@@ -5,13 +5,10 @@ local function mini_setup()
     rs('mini.ai')
     rs('mini.basics')
     rs('mini.bracketed')
-    rs('mini.comment')
     rs('mini.jump')
-    rs('mini.jump2d')
     rs('mini.pairs')
     rs('mini.starter')
     rs('mini.surround')
-    rs('mini.comment')
 end
 
 return {

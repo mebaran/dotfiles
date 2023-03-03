@@ -1,4 +1,5 @@
 return {
+    'kevinhwang91/nvim-bqf',
     'nvim-tree/nvim-web-devicons',
     {
         'nvim-treesitter/nvim-treesitter',
@@ -14,5 +15,12 @@ return {
 	    cmd = "Registers",
         config = true
     },
-    'kevinhwang91/nvim-bqf'
+    {
+        'numtostr/comment.nvim',
+        keys = {
+            { "gc", mode = {'n', 'v'} },
+            { "gb", mode = {'n', 'v'} }
+        },
+        config = true
+    }
 }
