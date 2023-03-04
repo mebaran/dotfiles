@@ -13,5 +13,6 @@ return {
     {
         "voldikss/vim-floaterm",
         name="floaterm",
-        config=floaterm_setup}
+        config=floaterm_setup
+    }
 }
