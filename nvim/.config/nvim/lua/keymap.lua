@@ -2,42 +2,6 @@ local map = function(mode, keys, cmd)
     vim.keymap.set(mode, keys, cmd, {silent=true, noremap=true})
 end
 
--- Telescope
-local project_files = function()
-    local opts = {} -- define here if you want to define something
-    local ok = pcall(require('telescope.builtin').git_files, opts)
-    if not ok then
-        require('telescope.builtin').find_files(opts)
-    end
-end
-map('n', '<leader>ff', project_files)
-map('n', '<leader>fg', ':Telescope git_files<cr>')
-map('n', '<leader>fk', ':Telescope buffers<cr>')
-map('n', '<leader>fs', ':Telescope live_grep<cr>')
-map('n', '<leader>fw', ':Telescope grep_string<cr>')
-
--- git navigation
-map('n', '<leader>ggc', ':Telescope git_commits<cr>')
-map('n', '<leader>ggs', ':Telescope git_status<cr>')
-
--- Quickfix mappings
-map('n', '<leader>ck', ':cexpr []<cr>')
-map('n', '<leader>cc', ':cclose <cr>')
-map('n', '<leader>co', ':copen <cr>')
-map('n', '<leader>cf', ':cfdo %s/')
-map('n', '<leader>cp', ':cprev<cr>zz')
-map('n', '<leader>cn', ':cnext<cr>zz')
-
--- buffer navigation
-map('n', '<leader>bp', ':bprev<cr>')
-map('n', '<leader>bn', ':bnext<cr>')
-map('n', '<leader>bd', ':bdelete<cr>')
-
--- tab navigation
-map('n', '<leader>tp', ':tabprevious<cr>')
-map('n', '<leader>tn', ':tabnext<cr>')
-map('n', '<leader>td', ':tabclose<cr>')
-
 -- resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')

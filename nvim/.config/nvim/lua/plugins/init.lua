@@ -5,6 +5,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     },
+    'nvim-treesitter/nvim-treesitter-textobjects',
     {
 	    'tversteeg/registers.nvim',
 	    name = "registers",
