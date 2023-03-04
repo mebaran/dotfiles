@@ -1,20 +1,16 @@
-local map = function(mode, keys, cmd)
+local map = function(mode, keys, cmd, opts)
     vim.keymap.set(mode, keys, cmd, {silent=true, noremap=true})
 end
+
+--Quickfix and Location list
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- resize with arrows
 map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
-
--- Terminal
-map('n', '<C-l>', ':FloatermToggle<CR>')
-map('t', '<C-l>', [[<C-\><C-n>]])
-map('t', '<C-w>l', [[<C-\><C-n>:FloatermNext<CR>]])
-map('t', '<C-w>h', [[<C-\><C-n>:FloatermPrev<CR>]])
-map('t', '<C-w>n', [[<C-\><C-n>:FloatermNew<CR>]])
-map('t', '<C-w>c', [[<C-\><C-n>:FloatermKill<CR>]])
 
 -- Terminal navigation
 map('t', '<C-w><Left>', [[<C-\><C-n><C-w><Left><CR>]])

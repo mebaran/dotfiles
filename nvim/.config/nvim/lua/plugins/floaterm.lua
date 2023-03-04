@@ -1,4 +1,4 @@
-local function floaterm_setup ()
+local function floaterm_setup()
     local g = vim.g
     local title = vim.env.SHELL
 
@@ -12,7 +12,15 @@ end
 return {
     {
         "voldikss/vim-floaterm",
-        name="floaterm",
-        config=floaterm_setup
+        name = "floaterm",
+        config = floaterm_setup,
+        keys = {
+            { '<C-l>',  ':FloatermToggle<CR>', mode = {'n', 'v'} },
+            { '<C-l>',  [[<C-\><C-n>]], mode = { 't' } },
+            { '<C-w>l', [[<C-\><C-n>:FloatermNext<CR>]], mode = { 't' } },
+            { '<C-w>h', [[<C-\><C-n>:FloatermPrev<CR>]], mode = { 't' } },
+            { '<C-w>n', [[<C-\><C-n>:FloatermNew<CR>]], mode = { 't' } },
+            { '<C-w>c', [[<C-\><C-n>:FloatermKill<CR>]], mode = { 't' } }
+        }
     }
 }
