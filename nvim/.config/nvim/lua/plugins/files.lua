@@ -1,4 +1,4 @@
-local function drex_vinegar () 
+local function drex_vinegar ()
     local drex = require('drex')
     local elements = require('drex.elements')
 
