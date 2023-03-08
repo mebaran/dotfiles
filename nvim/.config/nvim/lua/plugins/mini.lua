@@ -4,6 +4,7 @@ local function mini_setup()
     end
     rs('mini.ai')
     rs('mini.basics')
+    rs('mini.bufremove')
     rs('mini.bracketed')
     rs('mini.jump')
     rs('mini.pairs')
@@ -17,6 +18,13 @@ local function mini_setup()
             vim.b.miniindentscope_disable = true
         end
     })
+    local function bufdelete(force)
+        return function()
+            require('mini.bufremove').delete(nil, force)
+        end
+    end
+    vim.keymap.set('n', '<leader>bd', bufdelete(false), { noremap = true, desc = 'Delete buffer' })
+    vim.keymap.set('n', '<leader>bD', bufdelete(true), { noremap = true, desc = 'Force delete buffer' })
 end
 
 return {
