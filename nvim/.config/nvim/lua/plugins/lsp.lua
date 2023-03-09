@@ -8,7 +8,7 @@ local function lsp_zero_setup()
 
     -- Snippet setup
     require("luasnip.loaders.from_vscode").lazy_load()
-
+    
     -- (Optional) Configure lua language server for neovim
     lsp.nvim_workspace()
     lsp.setup()
