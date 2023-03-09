@@ -24,7 +24,7 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- search
-opt.hlsearch = false
+opt.hlsearch = true 
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
