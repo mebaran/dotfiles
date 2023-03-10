@@ -24,7 +24,7 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- search
-opt.hlsearch = true 
+opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
@@ -71,3 +71,6 @@ opt.updatetime = 100
 
 -- theme
 opt.termguicolors = true
+
+-- terminal fixes
+cmd([[autocmd TermOpen * setlocal nonumber norelativenumber]])
