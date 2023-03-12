@@ -10,7 +10,6 @@ if ! zgenom saved; then;
 
     # ohmyzsh plugins
     zgenom ohmyzsh
-    zgenom ohmyzsh plugins/ag
     zgenom ohmyzsh plugins/aliases
     zgenom ohmyzsh plugins/dotenv
     zgenom ohmyzsh plugins/fasd

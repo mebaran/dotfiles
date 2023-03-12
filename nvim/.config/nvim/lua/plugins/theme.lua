@@ -6,5 +6,9 @@ return {
         -- In Vim, compat mode is turned on as Lush only works in Neovim.
         dependencies = "rktjmp/lush.nvim",
         lazy = true
+    },
+    {
+        'sainnhe/everforest',
+        lazy = true
     }
 }
