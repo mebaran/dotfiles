@@ -23,8 +23,8 @@ local function mini_setup()
             require('mini.bufremove').delete(nil, force)
         end
     end
-    vim.keymap.set('n', '<leader>bd', bufdelete(false), { noremap = true, desc = 'Delete buffer' })
-    vim.keymap.set('n', '<leader>bD', bufdelete(true), { noremap = true, desc = 'Force delete buffer' })
+    vim.keymap.set('n', '<leader>bd', bufdelete(false), { desc = 'Delete buffer' })
+    vim.keymap.set('n', '<leader>bD', bufdelete(true), { desc = 'Force delete buffer' })
 end
 
 return {
