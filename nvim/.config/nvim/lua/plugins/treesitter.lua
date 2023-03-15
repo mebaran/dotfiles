@@ -3,7 +3,7 @@ local function treesitter_setup()
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
             'c', 'java', 'lua', 'javascript',
-            'python', 'rust', 'tsx', 
+            'python', 'rust', 'tsx',
             'typescript', 'help', 'vim'
         },
 
