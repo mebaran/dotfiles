@@ -1,9 +1,13 @@
 local function mini_setup()
-    local rs = function (s, t)
+    local rs = function(s, t)
         require(s).setup(t)
     end
     rs('mini.ai')
-    rs('mini.basics')
+    rs('mini.basics', {
+        options = {
+            extra_ui = true
+        }
+    })
     rs('mini.bufremove')
     rs('mini.bracketed')
     rs('mini.jump')

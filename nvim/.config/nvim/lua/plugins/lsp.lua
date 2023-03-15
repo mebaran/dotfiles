@@ -6,7 +6,11 @@ local function lsp_zero_setup()
         suggest_lsp_servers = false,
     })
     lsp.on_attach(function(client, bufnr)
-        vim.keymap.set({ "n", "v" }, "<leader>=", "<cmd>LspZeroFormat<cr>", { noremap = true })
+        local opts = {
+            desc = "Format with attached LSP(s)",
+            buffer = bufnr
+        }
+        vim.keymap.set({ "n", "v" }, "<leader>=", "<cmd>LspZeroFormat<cr>", opts)
     end)
 
     -- Snippet setup
