@@ -3,10 +3,6 @@ local opt = vim.opt
 local api = vim.api
 local g = vim.g
 
-cmd([[
-	filetype plugin indent on
-]])
-
 g.mapleader = ' '
 
 -- misc
@@ -32,25 +28,17 @@ opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*'
 opt.wildmenu = true
 
 -- ui
-opt.cursorline = true
-opt.mouse = 'a'
 opt.number = true
 opt.rnu = true
 opt.scrolloff = 20
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.signcolumn = 'yes:2'
-opt.splitbelow = true -- Open new split below
-opt.splitright = true -- Open new split to the right
-opt.wrap = false
 
 -- backups
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
-
--- theme
-opt.termguicolors = true
 
 -- terminal fixes
 local clean_term_grp = api.nvim_create_augroup("CleanTermGutter", { clear = true })
