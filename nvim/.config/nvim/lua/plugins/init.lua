@@ -23,5 +23,5 @@ return {
             { "gb", mode = {'n', 'v'} }
         },
         config = true
-    }
+    },
 }
