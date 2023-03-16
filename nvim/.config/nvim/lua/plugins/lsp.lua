@@ -5,6 +5,17 @@ local function lsp_zero_setup()
         manage_nvim_cmp = true,
         suggest_lsp_servers = false,
     })
+
+    lsp.configure('sumneko_lua', {
+        settings = {
+            Lua = {
+                completion = {
+                    showWord = 'fallback'
+                }
+            }
+        }
+    })
+
     lsp.on_attach(function(client, bufnr)
         local opts = {
             desc = "Format with attached LSP(s)",
@@ -12,6 +23,9 @@ local function lsp_zero_setup()
         }
         vim.keymap.set({ "n", "v" }, "<leader>=", "<cmd>LspZeroFormat<cr>", opts)
     end)
+    lsp.ensure_installed({
+        'jdtls', 'lua_ls', 'pyright', 'tsserver'
+    })
 
     -- Snippet setup
     require("luasnip.loaders.from_vscode").lazy_load()
