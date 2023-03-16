@@ -3,7 +3,7 @@ local function treesitter_setup()
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
             'c_sharp', 'java', 'lua', 'javascript',
-            'python', 'rust', 'tsx',
+            'python', 'rust', 'tsx', 'json',
             'typescript', 'help', 'vim'
         },
 
@@ -77,5 +77,5 @@ return {
     config = function()
         require('nvim-treesitter.install').update()
         treesitter_setup()
-    end,
+    end
 }
