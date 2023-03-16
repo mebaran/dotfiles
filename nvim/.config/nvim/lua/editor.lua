@@ -24,7 +24,6 @@ opt.tabstop = indent
 opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.wildmenu = true
 
 -- ui
@@ -33,7 +32,7 @@ opt.rnu = true
 opt.scrolloff = 20
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
-opt.signcolumn = 'yes:2'
+opt.signcolumn = 'yes'
 
 -- backups
 opt.backup = false

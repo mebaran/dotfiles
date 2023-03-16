@@ -22,24 +22,30 @@ local function lsp_zero_setup()
 end
 
 return {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v1.x",
-    dependencies = {
-        -- LSP Support
-        "neovim/nvim-lspconfig",
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v1.x",
+        dependencies = {
+            -- LSP Support
+            "neovim/nvim-lspconfig",
 
-        -- Autocompletion
-        "hrsh7th/nvim-cmp",
-        "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
+            -- Autocompletion
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lua",
 
-        -- Snippets
-        {
-            "L3MON4D3/LuaSnip",
-            build = "make install_jsregexp",
+            -- Snippets
+            {
+                "L3MON4D3/LuaSnip",
+                build = "make install_jsregexp",
+            },
+            "rafamadriz/friendly-snippets",
         },
-        "rafamadriz/friendly-snippets",
+        config = lsp_zero_setup,
     },
-    config = lsp_zero_setup,
+    {
+        "folke/neodev.nvim",
+        config = true
+    }
 }
