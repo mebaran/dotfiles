@@ -20,6 +20,6 @@ map('n', '<C-Right>', '"<Cmd>vertical resize +" . v:count1 . "<CR>"', { expr = t
 
 -- Terminal
 map('t', '<C-W>', [[<C-\><C-N><C-w>]], { desc = 'Focus other window' })
-map('t', '<C-n>', [[<C-\><C-n>]], { desc = "Quick access to normal mode" })
+map('t', '<C-x>', [[<C-\><C-n>]], { desc = "Quick access to normal mode" })
 map('n', '<leader>tv', "<cmd>vsplit | terminal <cr>", { desc = 'Split terminal vertically' })
 map('n', '<leader>tx', "<cmd>split | resize 20 | terminal<cr>", { desc = 'Split terminal horizontally' })
