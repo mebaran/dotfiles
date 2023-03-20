@@ -22,15 +22,15 @@ local function drex_setup()
     local elements = require('drex.elements')
     require('drex.config').configure {
         keybindings = {
-                ['n'] = {
-                    ['~'] = '<CMD>Drex ~<CR>',
-                    ['-'] = '<CMD>lua require("drex.elements").open_parent_directory()<CR>',
-                    ['.'] = function()
+            ['n'] = {
+                ['~'] = '<CMD>Drex ~<CR>',
+                ['-'] = '<CMD>lua require("drex.elements").open_parent_directory()<CR>',
+                ['.'] = function()
                     local element = require('drex.utils').get_element(vim.api.nvim_get_current_line())
                     local left = vim.api.nvim_replace_termcodes('<left>', true, false, true)
                     vim.api.nvim_feedkeys(': ' .. element .. string.rep(left, #element + 1), 'n', true)
                 end,
-                    ['<CR>'] = function()
+                ['<CR>'] = function()
                     local line = vim.api.nvim_get_current_line()
 
                     if require('drex.utils').is_open_directory(line) then
