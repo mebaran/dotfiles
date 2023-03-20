@@ -12,9 +12,8 @@ local function lsp_setup()
         set_lsp_keymaps = {
             omit = { '<F2>', '<F3>', '<F4>' }
         }
-
     })
-    
+
     -- CMP config
     local cmp = require('cmp')
     local cmp_action = require('lsp-zero').cmp_action()
@@ -23,21 +22,26 @@ local function lsp_setup()
             ['<Tab>'] = cmp_action.luasnip_supertab(),
             ['<S-Tab'] = cmp_action.luasnip_shift_supertab(),
             ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-            ['<C-b>'] = cmp_action.luasnip_jump_backward()
+            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ["<CR>"] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false,
+            }
         }
     })
 
-    lsp.skip_server_setup({'jdtls'})
+    lsp.skip_server_setup({ 'jdtls' })
 
-    lsp.on_attach(function(client, bufnr)
+    ---@diagnostic disable-next-line: unused-local
+    lsp.on_attach(function(_client, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
         local function nvmap(keys, func)
-            vim.keymap.set({'n', 'x'}, keys, func, { buffer = bufnr })
+            vim.keymap.set({ 'n', 'x' }, keys, func, { buffer = bufnr })
         end
         nvmap('<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
         nvmap('<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>')
-        nvmap('<leader>=', ':LspZeroFormat<CR>')
-        nvmap('<leader>==', ':LspZeroFormat!<CR>')
+        nvmap('<leader>=', '<Cmd>lua vim.lsp.buf.format({async=true})<CR>')
+        nvmap('<leader>==', '<Cmd>lua vim.lsp.buf.format()<CR>')
     end)
 
     -- (Optional) Configure lua language server for neovim
@@ -68,8 +72,16 @@ return {
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            {
+                'williamboman/mason.nvim',
+                config = true
+            },
+            {
+                'williamboman/mason-lspconfig.nvim',
+                opts = {
+                    ensure_installed = { 'lua_ls', 'pyright' }
+                }
+            },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
