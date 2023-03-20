@@ -1,65 +1,97 @@
-local function lsp_zero_setup()
-    local lsp = require("lsp-zero").preset({
-        name = "minimal",
-        set_lsp_keymaps = true,
+local function lsp_setup()
+    -- Disable virtual text noise
+    vim.diagnostic.config({
+        virtual_text = false
+    })
+
+    -- Start LSP zero
+    local lsp = require('lsp-zero').preset({
+        name = 'minimal',
         manage_nvim_cmp = true,
         suggest_lsp_servers = false,
-    })
+        set_lsp_keymaps = {
+            omit = { '<F2>', '<F3>', '<F4>' }
+        }
 
-    lsp.configure('sumneko_lua', {
-        settings = {
-            Lua = {
-                completion = {
-                    showWord = 'fallback'
-                }
-            }
+    })
+    
+    -- CMP config
+    local cmp = require('cmp')
+    local cmp_action = require('lsp-zero').cmp_action()
+    cmp.setup({
+        mapping = {
+            ['<Tab>'] = cmp_action.luasnip_supertab(),
+            ['<S-Tab'] = cmp_action.luasnip_shift_supertab(),
+            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+            ['<C-b>'] = cmp_action.luasnip_jump_backward()
         }
     })
+
+    lsp.skip_server_setup({'jdtls'})
 
     lsp.on_attach(function(client, bufnr)
-        local opts = {
-            desc = "Format with attached LSP(s)",
-            buffer = bufnr
-        }
-        vim.keymap.set({ "n", "v" }, "<leader>=", "<cmd>LspZeroFormat<cr>", opts)
+        lsp.default_keymaps({ buffer = bufnr })
+        local function nvmap(keys, func)
+            vim.keymap.set({'n', 'x'}, keys, func, { buffer = bufnr })
+        end
+        nvmap('<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
+        nvmap('<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+        nvmap('<leader>=', ':LspZeroFormat<CR>')
+        nvmap('<leader>==', ':LspZeroFormat!<CR>')
     end)
-    lsp.ensure_installed({
-        'jdtls', 'lua_ls', 'pyright', 'tsserver'
-    })
-
-    -- Snippet setup
-    require("luasnip.loaders.from_vscode").lazy_load()
 
     -- (Optional) Configure lua language server for neovim
-    lsp.nvim_workspace()
+    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+    -- Load friendly snippets
+    require('luasnip.loaders.from_vscode').lazy_load()
+
     lsp.setup()
 end
 
+local function mason_null_ls_setup()
+    local null_ls = require('null-ls')
+    local mason_null_ls = require('mason-null-ls')
+    mason_null_ls.setup({
+        automatic_installation = false,
+        automatic_setup = true
+    })
+    null_ls.setup()
+    mason_null_ls.setup_handlers()
+end
+
 return {
+    -- LSP Support
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v1.x",
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
         dependencies = {
             -- LSP Support
-            "neovim/nvim-lspconfig",
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lua",
-
-            -- Snippets
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-path' },
             {
                 "L3MON4D3/LuaSnip",
                 build = "make install_jsregexp",
             },
-            "rafamadriz/friendly-snippets",
+            { "rafamadriz/friendly-snippets" }
         },
-        config = lsp_zero_setup,
+        config = lsp_setup
     },
     {
         "folke/neodev.nvim",
         config = true
+    },
+    {
+        'jay-babu/mason-null-ls.nvim',
+        config = mason_null_ls_setup,
+        dependencies = {
+            'jose-elias-alvarez/null-ls.nvim'
+        }
     }
 }
