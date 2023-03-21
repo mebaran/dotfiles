@@ -18,7 +18,6 @@ local function drex_minus()
 end
 
 local function drex_setup()
-    local drex = require('drex')
     local elements = require('drex.elements')
     require('drex.config').configure {
         keybindings = {

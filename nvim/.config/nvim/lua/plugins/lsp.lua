@@ -21,6 +21,8 @@ local function lsp_setup()
         mapping = {
             ['<Tab>'] = cmp_action.luasnip_supertab(),
             ['<S-Tab'] = cmp_action.luasnip_shift_supertab(),
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
             ['<C-f>'] = cmp_action.luasnip_jump_forward(),
             ['<C-b>'] = cmp_action.luasnip_jump_backward(),
             ["<CR>"] = cmp.mapping.confirm {
@@ -42,6 +44,8 @@ local function lsp_setup()
         nvmap('<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>')
         nvmap('<leader>=', '<Cmd>lua vim.lsp.buf.format({async=true})<CR>')
         nvmap('<leader>==', '<Cmd>lua vim.lsp.buf.format()<CR>')
+
+        vim.keymap.set({'i'}, '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
     end)
 
     -- (Optional) Configure lua language server for neovim

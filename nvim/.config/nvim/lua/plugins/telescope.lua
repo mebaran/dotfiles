@@ -3,6 +3,7 @@
 local telescope_setup = function()
     local telescope = require('telescope')
     telescope.load_extension('fzf')
+    telescope.load_extension('ui-select')
     telescope.setup()
 end
 
@@ -67,6 +68,9 @@ return {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         lazy = true
+    },
+    {
+        'nvim-telescope/telescope-ui-select.nvim'
     },
     {
         "nvim-telescope/telescope.nvim",
