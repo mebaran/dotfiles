@@ -9,6 +9,7 @@ opt.backspace = { 'eol', 'start', 'indent' }
 opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
+opt.listchars = 'tab:▸ '
 
 -- indention
 local indent = 4
