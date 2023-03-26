@@ -59,7 +59,7 @@ return {
         'williamboman/mason-lspconfig.nvim',
         config = function()
             local opts = {
-                ensure_installed = { 'lua_ls', 'pyright', 'csharp_ls', 'jdtls' }
+                ensure_installed = { 'lua_ls', 'pyright', 'csharp_ls', 'jdtls', 'tsserver' }
             }
             local mlsp = require('mason-lspconfig')
             mlsp.setup(opts)
@@ -89,7 +89,7 @@ return {
                 automatic_setup = true
             })
             null_ls.setup()
-            mason_null_ls.setup_handlers()
+            mason_null_ls.setup_handlers({})
         end,
         dependencies = {
             'jose-elias-alvarez/null-ls.nvim'
