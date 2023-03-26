@@ -2,8 +2,15 @@
 
 local telescope_setup = function()
     local telescope = require('telescope')
+    telescope.setup({
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_cursor {}
+            }
+        }
+    })
     telescope.load_extension('fzf')
-    telescope.setup({})
+    telescope.load_extension("ui-select")
 end
 
 local function get_root()
@@ -147,5 +154,9 @@ return {
                 desc = "Goto Symbol (Workspace)"
             },
         }
+    },
+    {
+        'nvim-telescope/telescope-ui-select.nvim',
+        lazy = true
     }
 }
