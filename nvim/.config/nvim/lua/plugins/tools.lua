@@ -39,11 +39,54 @@ local LSP_CUSTOM_SETUP = {
     jdtls = LSP_SETUP_DISABLED
 }
 
+local function mason_lsp_setup()
+    local opts = {
+        ensure_installed = { 'lua_ls', 'pyright', 'csharp_ls', 'jdtls', 'tsserver' }
+    }
+    local mlsp = require('mason-lspconfig')
+    mlsp.setup(opts)
+    local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lspconfig = require('lspconfig')
+    mlsp.setup_handlers({
+        function(server_name)
+            local custom_setup = LSP_CUSTOM_SETUP[server_name]
+            if custom_setup then
+                custom_setup()
+            else
+                lspconfig[server_name].setup({
+                    capabilities = lsp_capabilities,
+                })
+            end
+        end
+    })
+end
+
+local function mason_null_ls_setup()
+    local null_ls = require('null-ls')
+    local mason_null_ls = require('mason-null-ls')
+    mason_null_ls.setup({
+        automatic_installation = false,
+        automatic_setup = true
+    })
+    null_ls.setup()
+    mason_null_ls.setup_handlers({})
+end
+
+local function mason_dap_setup()
+    local mason_dap = require('mason-nvim-dap')
+    mason_dap.setup({
+        ensure_installed = {'python', 'java'},
+        automatic_setup = true,
+    })
+    mason_dap.setup_handlers()
+end
+
 return {
     -- LSP Support
     {
         'neovim/nvim-lspconfig',
         dependencies = {
+            'jose-elias-alvarez/null-ls.nvim',
             {
                 "folke/neodev.nvim",
                 config = true
@@ -53,50 +96,20 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        config = true
-    },
-    {
-        'williamboman/mason-lspconfig.nvim',
         config = function()
-            local opts = {
-                ensure_installed = { 'lua_ls', 'pyright', 'csharp_ls', 'jdtls', 'tsserver' }
-            }
-            local mlsp = require('mason-lspconfig')
-            mlsp.setup(opts)
-            local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local lspconfig = require('lspconfig')
-            mlsp.setup_handlers({
-                function(server_name)
-                    local custom_setup = LSP_CUSTOM_SETUP[server_name]
-                    if custom_setup then
-                        custom_setup()
-                    else
-                        lspconfig[server_name].setup({
-                            capabilities = lsp_capabilities,
-                        })
-                    end
-                end
-            })
-        end
-    },
-    {
-        'jay-babu/mason-null-ls.nvim',
-        config = function()
-            local null_ls = require('null-ls')
-            local mason_null_ls = require('mason-null-ls')
-            mason_null_ls.setup({
-                automatic_installation = false,
-                automatic_setup = true
-            })
-            null_ls.setup()
-            mason_null_ls.setup_handlers({})
+            require('mason').setup()
+            mason_lsp_setup()
+            mason_null_ls_setup()
+            mason_dap_setup()
         end,
         dependencies = {
-            'jose-elias-alvarez/null-ls.nvim'
+            'williamboman/mason-lspconfig.nvim',
+            'jay-babu/mason-null-ls.nvim',
+            'jay-babu/mason-nvim-dap.nvim'
         }
     },
     {
         "mfussenegger/nvim-jdtls",
         ft = 'java'
-    }
+    },
 }
