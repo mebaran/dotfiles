@@ -69,7 +69,7 @@ local function mason_null_ls_setup()
         automatic_setup = true
     })
     null_ls.setup()
-    mason_null_ls.setup_handlers({})
+    mason_null_ls.setup_handlers()
 end
 
 local function mason_dap_setup()

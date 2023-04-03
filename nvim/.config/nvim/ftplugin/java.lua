@@ -25,11 +25,12 @@ local config = {
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
         bundles = {
-            vim.fn.glob("$MASON/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", true)
+            vim.fn.glob("$MASON/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar", true)
         }
     },
     on_attach = function(client, bufnr)
         require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+        require('jdtls.setup').add_commands()
     end
 }
 
