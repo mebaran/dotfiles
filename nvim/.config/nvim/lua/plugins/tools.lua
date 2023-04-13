@@ -34,7 +34,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev) lsp_callback(ev.buf) end
 })
 
-local LSP_SETUP_DISABLED = function() end
+local LSP_SETUP_DISABLED = function()
+end
 local LSP_CUSTOM_SETUP = {
     jdtls = LSP_SETUP_DISABLED
 }
@@ -62,23 +63,21 @@ local function mason_lsp_setup()
 end
 
 local function mason_null_ls_setup()
-    local null_ls = require('null-ls')
     local mason_null_ls = require('mason-null-ls')
+    local null_ls = require('null-ls')
     mason_null_ls.setup({
+        ensure_installed = { 'stylua', 'isort', 'autopep8' },
         automatic_installation = false,
-        automatic_setup = true
     })
-    null_ls.setup()
-    mason_null_ls.setup_handlers()
+    null_ls.setup({})
 end
 
 local function mason_dap_setup()
     local mason_dap = require('mason-nvim-dap')
     mason_dap.setup({
-        ensure_installed = {'python', 'java'},
+        ensure_installed = { 'python', 'javadbg', 'coreclr' },
         automatic_setup = true,
     })
-    mason_dap.setup_handlers()
 end
 
 return {
