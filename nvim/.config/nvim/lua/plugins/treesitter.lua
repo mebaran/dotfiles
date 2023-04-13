@@ -4,7 +4,7 @@ local function treesitter_setup()
         ensure_installed = {
             'c_sharp', 'java', 'lua', 'javascript',
             'python', 'rust', 'tsx',
-            'typescript', 'help', 'vim'
+            'typescript', 'vim', 'vimdoc'
         },
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
