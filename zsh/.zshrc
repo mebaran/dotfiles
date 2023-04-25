@@ -22,14 +22,18 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
 
+    # other plugins
+    zgenom load djui/alias-tips
     zgenom load supercrabtree/k
     zgenom load unixorn/autoupdate-zgenom
 
-    # completions   
-    zgenom load marlonrichert/zsh-autocomplete
+    # completions
+    zgenom load YuruiHong/zsh-autocomplete #temporarily relying on this branch due to #575
+    #zgenom load marlonrichert/zsh-autocomplete
     zgenom load zsh-users/zsh-completions
-    zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load zdharma-continuum/fast-syntax-highlighting
 
+    # theme
     zgenom ohmyzsh themes/steeef
 
     # save all to init script
@@ -54,9 +58,9 @@ unsetopt AUTO_CD
 # Bun
 [ -s "/home/mebaran/.bun/_bun" ] && source "/home/mebaran/.bun/_bun"
 
-zstyle ':autocomplete:*' widget-style menu-select
-zstyle ':autocomplete:*' recent-dirs fasd
-zstyle ':autocomplete:*' min-input 100
+# Autocomplete config
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 source "$HOME/.zsh_aliases"
 if [[ -f "$HOME/.zsh_local" ]]; then;
