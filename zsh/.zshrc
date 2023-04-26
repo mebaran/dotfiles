@@ -28,13 +28,12 @@ if ! zgenom saved; then;
     zgenom load unixorn/autoupdate-zgenom
 
     # completions
-    zgenom load YuruiHong/zsh-autocomplete #temporarily relying on this branch due to #575
-    #zgenom load marlonrichert/zsh-autocomplete
+    zgenom load marlonrichert/zsh-autocomplete
     zgenom load zsh-users/zsh-completions
     zgenom load zdharma-continuum/fast-syntax-highlighting
 
     # theme
-    zgenom ohmyzsh themes/steeef
+    zgenom ohmyzsh themes/ys
 
     # save all to init script
     zgenom save
@@ -59,6 +58,7 @@ unsetopt AUTO_CD
 [ -s "/home/mebaran/.bun/_bun" ] && source "/home/mebaran/.bun/_bun"
 
 # Autocomplete config
+zstyle ':autocomplete:*' min-input 99
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
