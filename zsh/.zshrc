@@ -33,7 +33,7 @@ if ! zgenom saved; then;
     zgenom load zdharma-continuum/fast-syntax-highlighting
 
     # theme
-    zgenom ohmyzsh themes/ys
+    zgenom ohmyzsh themes/steeef
 
     # save all to init script
     zgenom save
