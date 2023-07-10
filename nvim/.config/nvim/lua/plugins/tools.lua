@@ -34,15 +34,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev) lsp_callback(ev.buf) end
 })
 
-local LSP_SETUP_DISABLED = function()
-end
+local LSP_SETUP_DISABLED = function() end
 local LSP_CUSTOM_SETUP = {
     jdtls = LSP_SETUP_DISABLED
 }
 
 local function mason_lsp_setup()
     local opts = {
-        ensure_installed = { 'lua_ls', 'pyright', 'csharp_ls', 'jdtls', 'tsserver' }
+        ensure_installed = {
+            'lua_ls',
+            'pyright',
+            'csharp_ls',
+            'jdtls',
+            'tsserver',
+            'astro'
+        }
     }
     local mlsp = require('mason-lspconfig')
     mlsp.setup(opts)
@@ -75,7 +81,6 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            'jose-elias-alvarez/null-ls.nvim',
             {
                 "folke/neodev.nvim",
                 config = true
