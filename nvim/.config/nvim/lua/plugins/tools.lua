@@ -62,16 +62,6 @@ local function mason_lsp_setup()
     })
 end
 
-local function mason_null_ls_setup()
-    local mason_null_ls = require('mason-null-ls')
-    local null_ls = require('null-ls')
-    mason_null_ls.setup({
-        ensure_installed = { 'stylua', 'isort', 'autopep8' },
-        automatic_installation = false,
-    })
-    null_ls.setup({})
-end
-
 local function mason_dap_setup()
     local mason_dap = require('mason-nvim-dap')
     mason_dap.setup({
@@ -98,12 +88,10 @@ return {
         config = function()
             require('mason').setup()
             mason_lsp_setup()
-            mason_null_ls_setup()
             mason_dap_setup()
         end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
-            'jay-babu/mason-null-ls.nvim',
             'jay-babu/mason-nvim-dap.nvim'
         }
     },
