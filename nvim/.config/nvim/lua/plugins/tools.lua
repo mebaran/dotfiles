@@ -39,6 +39,20 @@ local LSP_CUSTOM_SETUP = {
     jdtls = LSP_SETUP_DISABLED
 }
 
+local function efmls_setup()
+    local efmls = require 'efmls-configs'
+    efmls.init {
+        -- Use a list of default configurations
+        -- set by this plugin
+        -- (Default: false)
+        default_config = true,
+        init_options = {
+            documentFormatting = true,
+        },
+    }
+    efmls.setup()
+end
+
 local function mason_lsp_setup()
     local opts = {
         ensure_installed = {
@@ -103,5 +117,10 @@ return {
     {
         "mfussenegger/nvim-jdtls",
         ft = 'java'
+    },
+    {
+        'creativenull/efmls-configs-nvim',
+        dependencies = { 'neovim/nvim-lspconfig' },
+        config = efmls_setup
     },
 }
