@@ -1,4 +1,5 @@
 local function treesitter_setup()
+    ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
@@ -6,6 +7,7 @@ local function treesitter_setup()
             'bash',
             'c_sharp',
             'css',
+            'go',
             'html',
             'java',
             'javascript',
