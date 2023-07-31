@@ -11,7 +11,7 @@ if ! zgenom saved; then;
     # ohmyzsh plugins
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/aliases
-    zgenom ohmyzsh plugins/dotenv
+    zgenom ohmyzsh plugins/direnv
     zgenom ohmyzsh plugins/fasd
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
