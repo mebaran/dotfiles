@@ -55,7 +55,10 @@ end
 return {
     {
         "nvim-lualine/lualine.nvim",
-        config = lualine_setup
+        config = lualine_setup,
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        }
     },
     {
         "nanozuki/tabby.nvim",

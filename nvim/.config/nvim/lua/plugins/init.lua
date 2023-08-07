@@ -1,11 +1,12 @@
 return {
-    'kevinhwang91/nvim-bqf',
-    'nvim-tree/nvim-web-devicons',
+    {
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf'
+    },
     {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     },
-    'nvim-treesitter/nvim-treesitter-textobjects',
     {
         'tversteeg/registers.nvim',
         name = "registers",
@@ -14,14 +15,6 @@ return {
             { "<C-R>", mode = "i" }
         },
         cmd = "Registers",
-        config = true
-    },
-    {
-        'numtostr/comment.nvim',
-        keys = {
-            { "gc", mode = { 'n', 'v' } },
-            { "gb", mode = { 'n', 'v' } }
-        },
         config = true
     },
     {
