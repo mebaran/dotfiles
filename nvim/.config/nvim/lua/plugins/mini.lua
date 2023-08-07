@@ -2,7 +2,18 @@ local function mini_setup()
     local rs = function(s, t)
         require(s).setup(t)
     end
-    rs('mini.ai')
+
+    local ai = require('mini.ai')
+    rs('mini.ai', {
+        custom_textobjects = {
+            o = ai.gen_spec.treesitter({
+                a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+                i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+            }, {}),
+            f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+            c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+        }
+    })
     rs('mini.basics', {
         options = {
             extra_ui = true
@@ -58,12 +69,15 @@ local function mini_setup()
             local buf_id = args.data.buf_id
             vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
             vim.keymap.set('n', '-', MiniFiles.go_out, { buffer = buf_id })
-            vim.keymap.set('n', '<CR>', MiniFiles.go_in, {buffer = buf_id })
+            vim.keymap.set('n', '<CR>', MiniFiles.go_in, { buffer = buf_id })
         end,
     })
 end
 
 return {
     "echasnovski/mini.nvim",
-    config = mini_setup
+    config = mini_setup,
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter-textobjects"
+    }
 }
