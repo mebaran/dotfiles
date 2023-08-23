@@ -1,4 +1,5 @@
 local function treesitter_setup()
+    ---@diagnostic disable: missing-fields
     require('nvim-treesitter.configs').setup {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {

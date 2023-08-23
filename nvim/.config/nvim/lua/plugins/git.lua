@@ -10,8 +10,8 @@ local setupf = function()
             end
 
             -- Navigation
-            map("n", "]h", gs.next_hunk, { desc = "Next Hunk" })
-            map("n", "[h", gs.prev_hunk, { desc = "Prev Hunk" })
+            map("n", "]h", gs.next_hunk, { desc = "Next hunk" })
+            map("n", "[h", gs.prev_hunk, { desc = "Prev hunk" })
 
             -- Actions
             map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
