@@ -40,10 +40,13 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-		dependencies = {
+		config = function ()
+		    local lspconfig = require('lspconfig')
+            lspconfig.jdtls.setup = function () return true end
+		end,
+        dependencies = {
 			{
 				"folke/neodev.nvim",
-				config = true,
 			},
 			"williamboman/mason-lspconfig.nvim",
 		},
