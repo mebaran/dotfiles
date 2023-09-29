@@ -14,7 +14,7 @@ return {
         "williamboman/mason.nvim",
         opts = function(_, opts)
             opts.ensure_installed = opts.ensure_installed or {}
-            vim.list_extend(opts.ensure_installed, { "java-test", "java-debug-adapter" })
+            vim.list_extend(opts.ensure_installed, { "jdtls", "java-test", "java-debug-adapter" })
         end
     },
     {
@@ -49,7 +49,7 @@ return {
             local find_root_dir = require("lspconfig.server_configurations.jdtls").default_config.root_dir
             -- How to find the project name for a given root dir.
             local find_project_name = function(root_dir)
-                return root_dir and vim.fs.basename(root_dir)
+                return root_dir and vim.fs.basename(find_root_dir(root_dir))
             end
             -- Where are the config and workspace dirs for a project?
             local jdtls_config_dir = function(project_name)
@@ -61,10 +61,13 @@ return {
             local function attach_jdtls()
                 local fname = vim.api.nvim_buf_get_name(0)
                 local pname = find_project_name(fname)
+                local lombok_path = mason_registry.get_package('jdtls'):get_install_path() .. "/lombok.jar"
                 -- Configuration can be augmented and overridden by opts.jdtls
                 local config = {
                     cmd = { 
                         "jdtls",
+                        "--jvm-arg=-javaagent:" .. lombok_path,
+                        "--jvm-arg=-Xbootclasspath/a:" .. lombok_path,
                         '-configuration', jdtls_config_dir(pname),
                         '-data', jdtls_workspace_dir(pname)
                     },
