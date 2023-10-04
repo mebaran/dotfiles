@@ -1,6 +1,10 @@
-local function treesitter_setup()
-    ---@diagnostic disable: missing-fields
-    require('nvim-treesitter.configs').setup {
+return {
+    -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    opts = {
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
             'astro',
@@ -85,17 +89,9 @@ local function treesitter_setup()
                 }
             }
         }
-    }
-end
-
-return {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    config = function()
+    config = function(_, opts)
         require('nvim-treesitter.install').update()
-        treesitter_setup()
+        require('nvim-treesitter.configs').setup(opts)
     end,
 }
