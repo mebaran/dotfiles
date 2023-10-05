@@ -64,7 +64,7 @@ return {
                 local lombok_path = mason_registry.get_package('jdtls'):get_install_path() .. "/lombok.jar"
                 -- Configuration can be augmented and overridden by opts.jdtls
                 local config = {
-                    cmd = { 
+                    cmd = {
                         "jdtls",
                         "--jvm-arg=-javaagent:" .. lombok_path,
                         "--jvm-arg=-Xbootclasspath/a:" .. lombok_path,
@@ -151,4 +151,18 @@ return {
             attach_jdtls()
         end
     },
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            -- make sure mason installs the server
+            servers = {
+                jdtls = {},
+            },
+            setup = {
+                jdtls = function()
+                    return true -- avoid duplicate servers
+                end,
+            },
+        },
+    }
 }
