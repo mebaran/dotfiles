@@ -95,7 +95,7 @@ local function mini_setup()
 
     --Mini Indentscope
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "terminal", "help", "alpha", "dashboard", "Trouble", "lazy", "mason", "nofile" },
+        pattern = { "dbui", "terminal", "help", "alpha", "dashboard", "Trouble", "lazy", "mason", "nofile" },
         callback = function()
             vim.b.miniindentscope_disable = true
         end,
