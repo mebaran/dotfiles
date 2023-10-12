@@ -11,7 +11,8 @@ end
 --Quickfix and Location list
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
-map("n", "<leader>xc", "<cmd>cclose<cr>", {desc = "Close Quickfix / Location Buffer"})
+map("n", "<leader>xc", "<cmd>cclose<cr>", { desc = "Close Quickfix / Location Buffer" })
+map("n", "<leader>xb", "<C-w>b<C-w>c", { desc = "Close bottom window" })
 
 -- Window resize
 map('n', '<C-Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width' })

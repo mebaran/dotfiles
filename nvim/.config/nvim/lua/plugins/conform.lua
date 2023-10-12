@@ -6,9 +6,9 @@ return {
         cmd = "ConformInfo",
         keys = {
             {
-                "<leader>cF",
+                "<leader>cf",
                 function()
-                    require("conform").format({ formatters = { "injected" } })
+                    require("conform").format()
                 end,
                 mode = { "n", "v" },
                 desc = "Format Injected Langs",
@@ -21,7 +21,7 @@ return {
             -- LazyVim will merge the options you set here with builtin formatters.
             -- You can also define any custom formatters here.
             ---@type table<string,table>
-            formatters = {
+            formatters_by_ft = {
                 -- -- Example of using dprint only when a dprint.json file is present
                 -- dprint = {
                 --   condition = function(ctx)
@@ -29,18 +29,6 @@ return {
                 --   end,
                 -- },
             },
-        },
-        config = function(_, opts)
-            opts.formatters = opts.formatters or {}
-            for name, formatter in pairs(opts.formatters) do
-                if type(formatter) == "table" then
-                    local ok, defaults = pcall(require, "conform.formatters." .. name)
-                    if ok and type(defaults) == "table" then
-                        opts.formatters[name] = vim.tbl_deep_extend("force", {}, defaults, formatter)
-                    end
-                end
-            end
-            require("conform").setup(opts)
-        end,
+        }
     },
 }
