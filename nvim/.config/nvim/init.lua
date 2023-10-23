@@ -13,7 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 require('editor')
 
 -- Plugins
-require('lazy').setup('plugins')
+require('lazy').setup({
+    { import = 'plugins' },
+    { import = 'lang' }
+})
 
 -- Key map setup
 require('keymap')

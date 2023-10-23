@@ -49,7 +49,9 @@ api.nvim_create_autocmd("TermOpen", {
     group = clean_term_grp
 })
 
--- Disable virtual text noise
+-- Diagnostics config
 vim.diagnostic.config({
-    virtual_text = false
+    virtual_text = false,
+    underline = true,
+    severity_sort = true,
 })
