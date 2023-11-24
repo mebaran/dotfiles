@@ -11,6 +11,7 @@ local telescope_setup = function()
     })
     telescope.load_extension('fzf')
     telescope.load_extension("ui-select")
+    telescope.load_extension("yank_history")
 end
 
 local function get_root()
@@ -157,6 +158,5 @@ return {
     },
     {
         'nvim-telescope/telescope-ui-select.nvim',
-        lazy = true
     }
 }
