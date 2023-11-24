@@ -10,6 +10,7 @@ opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
 opt.listchars = 'tab:▸ '
+opt.exrc = true
 
 -- indention
 local indent = 4
