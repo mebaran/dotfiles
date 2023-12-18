@@ -61,6 +61,21 @@ return {
     },
     -- Ensure Go tools are installed
     {
+        "mason.nvim",
+        opts = function(_, opts)
+            opts.ensure_installed = opts.ensure_installed or {}
+            vim.list_extend(
+                opts.ensure_installed,
+                {
+                    "delve",
+                    "goimports",
+                    "golines",
+                    "gomodifytags",
+                    "impl",
+                })
+        end,
+    },
+    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {
@@ -72,15 +87,6 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            {
-                "mason.nvim",
-                opts = function(_, opts)
-                    opts.ensure_installed = opts.ensure_installed or {}
-                    vim.list_extend(
-                        opts.ensure_installed, 
-                        { "gomodifytags", "impl", "goimports", "delve", "golines", })
-                end,
-            },
             {
                 "leoluz/nvim-dap-go",
                 config = true,
