@@ -17,7 +17,18 @@ return {
                     "htmx-lsp",
                     "emmet-ls",
                     "html-lsp",
+                    "prettierd",
+                    "css-lsp",
                 })
         end,
     },
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                css = { "prettierd" },
+                html = { "prettierd" },
+            }
+        }
+    }
 }
