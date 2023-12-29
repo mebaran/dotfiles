@@ -1,24 +1,9 @@
 return {
     {
-        "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, {
-                "go",
-                "gomod",
-                "gowork",
-                "gosum",
-            })
-        end,
-    },
-    {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
                 gopls = {
-                    keys = {
-                        -- Workaround for the lack of a DAP strategy in neotest-go: https://github.com/nvim-neotest/neotest-go/issues/12
-                        { "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>", desc = "Debug Nearest (Go)" },
-                    },
                     settings = {
                         gopls = {
                             gofumpt = true,
@@ -71,6 +56,7 @@ return {
                     "goimports",
                     "golines",
                     "gomodifytags",
+                    "gofumpt",
                     "impl",
                 })
         end,
@@ -80,7 +66,7 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                go = { "goimports", "golines", },
+                go = { "goimports", "golines", "gofumpt", },
             },
         },
     },
