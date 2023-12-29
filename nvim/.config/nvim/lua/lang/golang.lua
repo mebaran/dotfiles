@@ -52,11 +52,18 @@ return {
             vim.list_extend(
                 opts.ensure_installed,
                 {
+                    "iferr",
+                    "goimports-reviser",
+                    "nilaway",
+                    "revive",
+                    "gotestsum",
+                    "gotests",
                     "delve",
+                    "gofumpt",
                     "goimports",
                     "golines",
                     "gomodifytags",
-                    "gofumpt",
+                    "gopls",
                     "impl",
                 })
         end,
