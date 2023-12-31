@@ -3,14 +3,14 @@
 local telescope_setup = function()
     local telescope = require('telescope')
     telescope.setup({
-        extensions = {
-            ["ui-select"] = {
-                require("telescope.themes").get_cursor {}
-            }
-        }
+        -- extensions = {
+        --     ["ui-select"] = {
+        --         require("telescope.themes").get_cursor {}
+        --     }
+        -- }
     })
     telescope.load_extension('fzf')
-    telescope.load_extension("ui-select")
+    -- telescope.load_extension("ui-select")
     telescope.load_extension("yank_history")
 end
 

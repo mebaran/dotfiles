@@ -113,5 +113,9 @@ return {
             { "=p", "<Plug>(YankyPutAfterFilter)",            desc = "Put after applying a filter" },
             { "=P", "<Plug>(YankyPutBeforeFilter)",           desc = "Put before applying a filter" },
         },
+    },
+    {
+        'doums/suit.nvim',
+        opts = {}
     }
 }

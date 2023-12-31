@@ -7,6 +7,15 @@ return {
         end
     },
     {
+        "stevearc/conform.nvim",
+        optional = true,
+        opts = {
+            formatters_by_ft = {
+                sql = { "sqlfluff" },
+            },
+        },
+    },
+    {
         "mason.nvim",
         opts = function(_, opts)
             opts.ensure_installed = opts.ensure_installed or {}
