@@ -3,14 +3,14 @@
 local telescope_setup = function()
     local telescope = require('telescope')
     telescope.setup({
-        -- extensions = {
-        --     ["ui-select"] = {
-        --         require("telescope.themes").get_cursor {}
-        --     }
-        -- }
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_cursor {}
+            }
+        }
     })
     telescope.load_extension('fzf')
-    -- telescope.load_extension("ui-select")
+    telescope.load_extension("ui-select")
     telescope.load_extension("yank_history")
 end
 
@@ -79,8 +79,10 @@ return {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = 'make'
             },
+            'nvim-telescope/telescope-ui-select.nvim',
             "nvim-lua/plenary.nvim"
         },
+        event = 'VeryLazy',
         cmd = 'Telescope',
         keys = {
             { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
@@ -156,7 +158,4 @@ return {
             },
         }
     },
-    {
-        'nvim-telescope/telescope-ui-select.nvim',
-    }
 }
