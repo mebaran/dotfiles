@@ -21,6 +21,7 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/npm
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
+    zgenom ohmyzsh plugins/fzf
 
     # other plugins
     zgenom load djui/alias-tips
