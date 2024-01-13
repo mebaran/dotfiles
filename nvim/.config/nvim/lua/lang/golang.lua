@@ -1,5 +1,13 @@
 return {
     {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+            if type(opts.ensure_installed) == "table" then
+                vim.list_extend(opts.ensure_installed, { "go", "gomod", "gowork", "gosum" })
+            end
+        end,
+    },
+    {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
@@ -76,6 +84,14 @@ return {
                 go = { "goimports", "golines", "gofumpt", },
             },
         },
+    },
+    {
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = function(_, opts)
+            opts.linters_by_ft = opts.linters_by_ft or {}
+            opts.linters_by_ft.golang = { "nilaway" }
+        end
     },
     {
         "mfussenegger/nvim-dap",

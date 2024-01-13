@@ -2,7 +2,7 @@ return {
     {
         "stevearc/conform.nvim",
         dependencies = { "mason.nvim" },
-        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
         cmd = "ConformInfo",
         keys = {
             {
@@ -35,7 +35,7 @@ return {
         "mfussenegger/nvim-lint",
         opts = {
             -- Event to trigger linters
-            events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+            events = { "BufWritePost", "BufReadPost" },
             linters_by_ft = {
             },
             -- LazyVim extension to easily override linter options
