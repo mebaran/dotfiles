@@ -22,6 +22,7 @@ return {
             -- You can also define any custom formatters here.
             ---@type table<string,table>
             formatters_by_ft = {
+                go = { "goimports", "golines", "gofumpt", },
                 -- -- Example of using dprint only when a dprint.json file is present
                 -- dprint = {
                 --   condition = function(ctx)
@@ -37,6 +38,8 @@ return {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost" },
             linters_by_ft = {
+                golang = { "nilaway" },
+                sql = { "sqlfluff" },
             },
             -- LazyVim extension to easily override linter options
             -- or add custom linters.

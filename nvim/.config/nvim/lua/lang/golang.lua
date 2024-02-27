@@ -77,23 +77,6 @@ return {
         end,
     },
     {
-        "stevearc/conform.nvim",
-        optional = true,
-        opts = {
-            formatters_by_ft = {
-                go = { "goimports", "golines", "gofumpt", },
-            },
-        },
-    },
-    {
-        "mfussenegger/nvim-lint",
-        optional = true,
-        opts = function(_, opts)
-            opts.linters_by_ft = opts.linters_by_ft or {}
-            opts.linters_by_ft.golang = { "nilaway" }
-        end
-    },
-    {
         "mfussenegger/nvim-dap",
         dependencies = {
             {
