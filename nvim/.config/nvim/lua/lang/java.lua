@@ -1,14 +1,4 @@
 return {
-    -- Add java to treesitter.
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-            if type(opts.ensure_installed) == "table" then
-                vim.list_extend(opts.ensure_installed, { "java" })
-            end
-        end,
-    },
-
     -- Ensure java debugger and test packages are installed
     {
         "mfussenegger/nvim-jdtls",

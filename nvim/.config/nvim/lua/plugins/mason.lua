@@ -31,10 +31,10 @@ return {
                 "jdtls",
                 "java-test",
                 "java-debug-adapter",
-                -- Supplier
+                -- SQL
                 "sqlfluff",
-                -- Prettierd
-                "pretterid",
+                -- Javascript
+                "prettierd",
             },
         },
         ---@param opts MasonSettings | {ensure_installed: string[]}
