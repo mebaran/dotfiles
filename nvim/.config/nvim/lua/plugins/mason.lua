@@ -7,11 +7,34 @@ return {
         build = ":MasonUpdate",
         opts = {
             ensure_installed = {
+                -- Lua
                 "stylua",
                 "shfmt",
+                -- Golang
+                "iferr",
+                "goimports-reviser",
+                "nilaway",
+                "revive",
+                "gotestsum",
+                "gotests",
+                "delve",
+                "gofumpt",
+                "goimports",
+                "golines",
+                "gomodifytags",
+                "impl",
                 -- Python
-                "flake8",
+                "debugpy",
                 "autopep8",
+                "isort",
+                -- Java
+                "jdtls",
+                "java-test",
+                "java-debug-adapter",
+                -- Supplier
+                "sqlfluff",
+                -- Prettierd
+                "pretterid",
             },
         },
         ---@param opts MasonSettings | {ensure_installed: string[]}
