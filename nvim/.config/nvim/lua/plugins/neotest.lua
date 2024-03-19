@@ -6,7 +6,10 @@ return {
             -- or a list of adapter names,
             -- or a table of adapter names, mapped to adapter configs.
             -- The adapter will then be automatically loaded with the config.
-            adapters = {},
+            adapters = {
+                ["neotest-go"] = {},
+                ["neotest-python"] = {},
+            },
             -- Example for loading neotest-go with a custom config
             -- adapters = {
             --   ["neotest-go"] = {
@@ -20,6 +23,10 @@ return {
                     vim.cmd("Trouble quickfix")
                 end,
             },
+        },
+        dependencies = {
+            "neotest-go",
+            "neotest-python",
         },
         config = function(_, opts)
             local neotest_ns = vim.api.nvim_create_namespace("neotest")

@@ -23,6 +23,7 @@ return {
                 "golines",
                 "gomodifytags",
                 "impl",
+                "templ",
                 -- Python
                 "debugpy",
                 "autopep8",
