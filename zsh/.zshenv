@@ -44,3 +44,8 @@ if [[ -d $HOME/.bun ]]; then;
     export BUN_INSTALL="$HOME/.bun"
     path=("$BUN_INSTALL/bin" $path)
 fi
+
+#Brew Setup
+if [[ -d /opt/homebrew/bin ]]; then;
+    path=(/opt/homebrew/bin $path)
+fi
