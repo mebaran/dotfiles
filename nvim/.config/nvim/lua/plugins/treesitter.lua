@@ -69,6 +69,7 @@ return {
                 "query",
                 "regex",
                 "rst",
+                "templ",
                 "toml",
                 "tsx",
                 "typescript",
