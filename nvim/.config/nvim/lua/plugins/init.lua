@@ -62,6 +62,15 @@ return {
         },
     },
     {
+        "folke/zen-mode.nvim",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        cmd = "ZenMode"
+    },
+    {
         "gbprod/yanky.nvim",
         dependencies = { { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") } },
         opts = {
@@ -78,27 +87,32 @@ return {
             {
                 "y",
                 "<Plug>(YankyYank)",
-                mode = { "n", "x" }, desc = "Yank text"
+                mode = { "n", "x" },
+                desc = "Yank text"
             },
             {
                 "p",
                 "<Plug>(YankyPutAfter)",
-                mode = { "n", "x" }, desc = "Put yanked text after cursor"
+                mode = { "n", "x" },
+                desc = "Put yanked text after cursor"
             },
             {
                 "P",
                 "<Plug>(YankyPutBefore)",
-                mode = { "n", "x" }, desc = "Put yanked text before cursor"
+                mode = { "n", "x" },
+                desc = "Put yanked text before cursor"
             },
             {
                 "gp",
                 "<Plug>(YankyGPutAfter)",
-                mode = { "n", "x" }, desc = "Put yanked text after selection"
+                mode = { "n", "x" },
+                desc = "Put yanked text after selection"
             },
             {
                 "gP",
                 "<Plug>(YankyGPutBefore)",
-                mode = { "n", "x" }, desc = "Put yanked text before selection"
+                mode = { "n", "x" },
+                desc = "Put yanked text before selection"
             },
             { "[y", "<Plug>(YankyCycleForward)",              desc = "Cycle forward through yank history" },
             { "]y", "<Plug>(YankyCycleBackward)",             desc = "Cycle backward through yank history" },
