@@ -12,16 +12,12 @@ if ! zgenom saved; then;
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/aliases
     zgenom ohmyzsh plugins/direnv
+    zgenom ohmyzsh plugins/fzf
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
-    zgenom ohmyzsh plugins/history
     zgenom ohmyzsh plugins/python
-    zgenom ohmyzsh plugins/nvm
-    zgenom ohmyzsh plugins/npm
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
-    zgenom ohmyzsh plugins/fzf
-    zgenom ohmyzsh plugins/podman
 
     # other plugins
     zgenom load djui/alias-tips
@@ -54,10 +50,6 @@ fi
 
 # Extra env vars for interactive computing
 unsetopt AUTO_CD
-
-# Extra completions
-# Bun
-[ -s "/home/mebaran/.bun/_bun" ] && source "/home/mebaran/.bun/_bun"
 
 # Autocomplete config
 zstyle ':autocomplete:*' min-input 99
