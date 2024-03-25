@@ -2,3 +2,9 @@ whence nvim &> /dev/null && alias vim=nvim
 whence lazygit &> /dev/null && alias lg=lazygit
 whence k3s &> /dev/null && alias kubectl="k3s kubectl"
 whence fdfind &> /dev/null && alias fd=fdfind
+
+# FASD
+alias v='f -e "$EDITOR"'
+alias o='a -e xdg-open'
+alias j='zz'
+    

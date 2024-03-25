@@ -12,7 +12,6 @@ if ! zgenom saved; then;
     zgenom ohmyzsh
     zgenom ohmyzsh plugins/aliases
     zgenom ohmyzsh plugins/direnv
-    zgenom ohmyzsh plugins/fasd
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
     zgenom ohmyzsh plugins/history
@@ -26,6 +25,7 @@ if ! zgenom saved; then;
 
     # other plugins
     zgenom load djui/alias-tips
+    zgenom load whjvenyl/fasd
     zgenom load supercrabtree/k
     zgenom load unixorn/autoupdate-zgenom
 
