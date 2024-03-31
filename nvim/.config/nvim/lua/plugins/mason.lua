@@ -34,6 +34,7 @@ return {
                 "java-debug-adapter",
                 -- SQL
                 "sqlfluff",
+                "sqls",
                 -- Javascript
                 "prettierd",
             },
