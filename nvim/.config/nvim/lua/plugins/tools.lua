@@ -47,7 +47,7 @@ return {
             linters_by_ft = {
                 golang = { "nilaway" },
                 sql = { "sqlfluff" },
-                javascript = {'eslint_d'},
+                javascript = { "eslint_d" },
             },
             -- LazyVim extension to easily override linter options
             -- or add custom linters.
