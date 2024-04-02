@@ -29,12 +29,4 @@ return {
         end,
         keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
     },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                python = { "autopep8", "isort" }
-            }
-        }
-    }
 }
