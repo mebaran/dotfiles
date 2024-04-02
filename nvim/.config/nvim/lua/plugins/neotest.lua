@@ -108,6 +108,8 @@ return {
             },
         },
     },
+    { "neotest-nvim/neotest-go", opts = {} },
+    { "neotest-nvim/neotest-python", opts = {} },
     {
         "mfussenegger/nvim-dap",
         -- stylua: ignore
