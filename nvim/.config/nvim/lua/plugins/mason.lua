@@ -37,6 +37,10 @@ return {
                 "sqls",
                 -- Javascript
                 "prettierd",
+                "eslint_d",
+                "typescript-language-server",
+                -- Teraform
+                "terraform-ls",
             },
         },
         ---@param opts MasonSettings | {ensure_installed: string[]}
