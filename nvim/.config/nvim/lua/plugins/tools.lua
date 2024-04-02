@@ -25,6 +25,7 @@ return {
                 css = { "prettierd" },
                 go = { "goimports", "golines", "gofumpt", },
                 html = { "prettierd" },
+                javascript = { 'prettierd' },
                 python = { "autopep8", "isort" },
                 sql = { "pg_format" },
                 terraform = { "terraform_fmt" },
@@ -45,7 +46,7 @@ return {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost" },
             linters_by_ft = {
-                golang = { "nilaway" },
+                go = { "nilaway" },
                 sql = { "sqlfluff" },
                 javascript = { "eslint_d" },
             },

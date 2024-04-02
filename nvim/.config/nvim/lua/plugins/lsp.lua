@@ -3,7 +3,6 @@ local function lsp_callback(bufnr)
     vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
     local function opts_desc(desc)
         return { buffer = bufnr, desc = desc }
     end
@@ -124,7 +123,20 @@ return {
                         },
                     },
                 },
+                sqls = {
+                    settings = {
+                        sqls = {
+                            connections = {
+                                -- {
+                                --     driver = "postgresql",
+                                --     dataSourceName = "host=/var/run/postgresql database=mbaran"
+                                -- }
+                            }
+                        }
+                    }
+                }
             },
+
             -- you can do any additional lsp server setup here
             -- return true if you don't want this server to be setup with lspconfig
             ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
