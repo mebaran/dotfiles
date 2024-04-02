@@ -25,8 +25,13 @@ return {
             },
         },
         dependencies = {
-            "neotest-go",
-            "neotest-python",
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            -- Adapters
+            "nvim-neotest/neotest-go",
+            "nvim-neotest/neotest-python"
         },
         config = function(_, opts)
             local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -106,15 +111,6 @@ return {
                 function() require("neotest").run.stop() end,
                 desc = "Stop"
             },
-        },
-    },
-    { "neotest-nvim/neotest-go", opts = {} },
-    { "neotest-nvim/neotest-python", opts = {} },
-    {
-        "mfussenegger/nvim-dap",
-        -- stylua: ignore
-        keys = {
-            { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
         },
     },
 }

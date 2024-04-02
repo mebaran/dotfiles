@@ -74,6 +74,7 @@ local M = {
         },
         { "<leader>dx", function() require("dap").terminate() end, desc = "Terminate", },
         { "<leader>du", function() require("dap").step_out() end,  desc = "Step Out", },
+        { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
     },
     config = function(plugin, opts)
         require("nvim-dap-virtual-text").setup {
