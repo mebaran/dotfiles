@@ -5,3 +5,5 @@ blacklistadd https://calendar.google.com
 blacklistadd https://mail.google.com
 blacklistadd https://meet.google.com
 blacklistadd https://teams.microsoft.com
+
+colorscheme shydactyl
