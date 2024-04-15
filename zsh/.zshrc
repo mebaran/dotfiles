@@ -26,9 +26,9 @@ if ! zgenom saved; then;
     zgenom load unixorn/autoupdate-zgenom
 
     # completions
-    zgenom load marlonrichert/zsh-autocomplete
     zgenom load zsh-users/zsh-completions
     zgenom load zdharma-continuum/fast-syntax-highlighting
+    zgenom load marlonrichert/zsh-autocomplete
 
     # theme
     zgenom ohmyzsh themes/steeef

@@ -49,3 +49,7 @@ fi
 if [[ -d /opt/homebrew/bin ]]; then;
     path=(/opt/homebrew/bin $path)
 fi
+
+if [[ -f $HOME/.zshlocal ]]; then;
+    source $HOME/.zshlocal
+fi
