@@ -19,16 +19,16 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
 
+    # completions
+    zgenom load zsh-users/zsh-completions
+    zgenom load zdharma-continuum/fast-syntax-highlighting
+    zgenom load marlonrichert/zsh-autocomplete
+    
     # other plugins
     zgenom load djui/alias-tips
     zgenom load whjvenyl/fasd
     zgenom load supercrabtree/k
     zgenom load unixorn/autoupdate-zgenom
-
-    # completions
-    zgenom load zsh-users/zsh-completions
-    zgenom load zdharma-continuum/fast-syntax-highlighting
-    zgenom load marlonrichert/zsh-autocomplete
 
     # theme
     zgenom ohmyzsh themes/steeef
@@ -52,7 +52,7 @@ fi
 unsetopt AUTO_CD
 
 # Autocomplete config
-zstyle ':autocomplete:*' min-input 99
+zstyle ':autocomplete:*' min-input 999
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
