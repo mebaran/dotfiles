@@ -47,7 +47,6 @@ return {
             events = { "BufWritePost", "BufReadPost" },
             linters_by_ft = {
                 go = { "nilaway" },
-                sql = { "sqlfluff" },
                 javascript = { "eslint_d" },
             },
             -- LazyVim extension to easily override linter options

@@ -50,6 +50,10 @@ fi
 
 # Extra env vars for interactive computing
 unsetopt AUTO_CD
+setopt EXTENDED_GLOB
+
+# SSH-agent config
+zstyle ':omz:plugins:ssh-agent' identities ~/.ssh/id*~*.pub 
 
 # Autocomplete config
 zstyle ':autocomplete:*' min-input 999

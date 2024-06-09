@@ -69,6 +69,7 @@ return {
                 "query",
                 "regex",
                 "rst",
+                "sql",
                 "templ",
                 "toml",
                 "tsx",
