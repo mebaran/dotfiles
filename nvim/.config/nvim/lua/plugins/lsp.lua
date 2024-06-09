@@ -124,18 +124,6 @@ return {
                         },
                     },
                 },
-                sqls = {
-                    settings = {
-                        sqls = {
-                            connections = {
-                                -- {
-                                --     driver = "postgresql",
-                                --     dataSourceName = "host=/var/run/postgresql database=mbaran"
-                                -- }
-                            }
-                        }
-                    }
-                }
             },
 
             -- you can do any additional lsp server setup here

@@ -14,6 +14,24 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
 map("n", "<leader>xc", "<cmd>cclose<cr>", { desc = "Close Quickfix / Location Buffer" })
 map("n", "<leader>xb", "<C-w>b<C-w>c", { desc = "Close bottom window" })
 
+--Q to close everywhere reasonable
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "checkhealth",
+        "fugitive*",
+        "git",
+        "help",
+        "lspinfo",
+        "netrw",
+        "notify",
+        "qf",
+        "query",
+    },
+    callback = function()
+        map("n", "q", vim.cmd.close, { desc = "Close the current buffer", buffer = true })
+    end,
+})
+
 -- Window resize
 map('n', '<C-Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width' })
 map('n', '<C-Down>', '<Cmd>resize -2<CR>', { desc = 'Decrease window height' })
