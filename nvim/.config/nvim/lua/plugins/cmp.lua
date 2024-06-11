@@ -1,7 +1,7 @@
-local function cmp_setup()
+local function cmp_opts(_, opts)
 	vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")
-	local opts = {
+	return {
 		completion = {
 			completeopt = "menu,menuone,noselect",
 		},
@@ -63,7 +63,6 @@ local function cmp_setup()
             },
         },
 	}
-    cmp.setup(opts)
 end
 
 return {
@@ -71,10 +70,10 @@ return {
 		"hrsh7th/nvim-cmp",
 		version = false, -- last release is way too old
 		event = "InsertEnter",
-		config = cmp_setup,
+		opts = cmp_opts,
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
+			-- { "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-path" },
 			{
 				"L3MON4D3/LuaSnip",
