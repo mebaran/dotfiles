@@ -55,7 +55,6 @@ local function cmp_setup()
 		sources = {
 			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
-			{ name = "nvim_lua" },
 			{ name = "path" },
 		},
         experimental = {
@@ -64,7 +63,7 @@ local function cmp_setup()
             },
         },
 	}
-	return cmp.setup(opts)
+    cmp.setup(opts)
 end
 
 return {
@@ -72,7 +71,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		version = false, -- last release is way too old
 		event = "InsertEnter",
-		opts = cmp_setup,
+		config = cmp_setup,
 		dependencies = {
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
@@ -80,8 +79,12 @@ return {
 			{
 				"L3MON4D3/LuaSnip",
 				build = "make install_jsregexp",
+			    dependencies = { "rafamadriz/friendly-snippets" },
+                config = function ()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end
 			},
-			{ "rafamadriz/friendly-snippets" },
+            { 'saadparwaiz1/cmp_luasnip', },
 		},
 	},
 }

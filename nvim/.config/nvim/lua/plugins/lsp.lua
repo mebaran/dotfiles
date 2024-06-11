@@ -40,7 +40,6 @@ return {
         -- event = "LazyFile",
         dependencies = {
             { "folke/neoconf.nvim",                opts = {} },
-            { "folke/neodev.nvim",                 opts = {} },
             { "williamboman/mason-lspconfig.nvim", opts = {} },
         },
         ---@class PluginLspOpts
@@ -54,23 +53,6 @@ return {
             -- LSP Server Settings
             ---@type lspconfig.options
             servers = {
-                lua_ls = {
-                    -- mason = false, -- set to false if you don't want this server to be installed with mason
-                    -- Use this to add any additional keymaps
-                    -- for specific lsp servers
-                    ---@type LazyKeys[]
-                    -- keys = {},
-                    settings = {
-                        Lua = {
-                            workspace = {
-                                checkThirdParty = false,
-                            },
-                            completion = {
-                                callSnippet = "Replace",
-                            },
-                        },
-                    },
-                },
                 jsonls = {
                     -- lazy-load schemastore when needed
                     on_new_config = function(new_config)
