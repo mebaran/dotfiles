@@ -42,6 +42,7 @@ return {
     },
     {
         "mfussenegger/nvim-lint",
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost" },

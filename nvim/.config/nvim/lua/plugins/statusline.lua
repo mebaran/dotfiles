@@ -1,9 +1,3 @@
-local function lualine_setup()
-    require('lualine').setup({
-        globalstatus = true
-    })
-end
-
 local function tabby_setup()
     local theme = {
         fill = 'Visual',
@@ -55,13 +49,16 @@ end
 return {
     {
         "nvim-lualine/lualine.nvim",
-        config = lualine_setup,
+        opts = {
+            globalstatus = true
+        },
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         }
     },
     {
         "nanozuki/tabby.nvim",
-        config = tabby_setup
+        config = tabby_setup,
+        event = "VeryLazy",
     }
 }
