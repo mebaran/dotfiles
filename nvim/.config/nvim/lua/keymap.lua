@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "notify",
         "qf",
         "query",
+        "sqls_output",
     },
     callback = function()
         map("n", "q", vim.cmd.close, { desc = "Close the current buffer", buffer = true })
