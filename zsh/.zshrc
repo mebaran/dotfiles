@@ -18,6 +18,7 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper
+    zgenom ohmyzsh plugins/z
 
     # completions
     zgenom load zsh-users/zsh-completions
@@ -26,7 +27,7 @@ if ! zgenom saved; then;
     
     # other plugins
     zgenom load djui/alias-tips
-    zgenom load whjvenyl/fasd
+    # zgenom load whjvenyl/fasd
     zgenom load supercrabtree/k
     zgenom load unixorn/autoupdate-zgenom
 
