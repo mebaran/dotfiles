@@ -61,6 +61,9 @@ zstyle ':autocomplete:*' min-input 999
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
+# zoxide functions
+whence zoxide &> /dev/null && eval "$(zoxide init --cmd c zsh)"
+
 source "$HOME/.zsh_aliases"
 if [[ -f "$HOME/.zsh_local" ]]; then;
     source "$HOME/.zsh_local";
