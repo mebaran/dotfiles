@@ -62,7 +62,7 @@ bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 # zoxide functions
-whence zoxide &> /dev/null && eval "$(zoxide init --cmd c zsh)"
+whence zoxide &> /dev/null && eval "$(zoxide init --cmd d zsh)"
 
 source "$HOME/.zsh_aliases"
 if [[ -f "$HOME/.zsh_local" ]]; then;

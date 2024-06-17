@@ -49,6 +49,10 @@ fi
 if [[ -d /opt/homebrew/bin ]]; then;
     path=(/opt/homebrew/bin $path)
 fi
+if [[ -d /opt/homebrew/share/zsh/site-functions/ ]]; then;
+    fpath+=(/opt/homebrew/share/zsh/site-functions/)
+fi
+
 
 if [[ -f $HOME/.zshlocal ]]; then;
     source $HOME/.zshlocal
