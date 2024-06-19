@@ -135,12 +135,24 @@ local function mini_setup()
         MiniFiles.refresh({ content = { filter = new_filter } })
     end
     local function mini_enter()
-        local fs_entry = MiniFiles.get_fs_entry()
-        local is_at_file = fs_entry ~= nil and fs_entry.fs_type == "file"
-        MiniFiles.go_in()
-        if is_at_file then
-            MiniFiles.close()
+        MiniFiles.go_in({ close_on_file = true })
+    end
+    local map_split = function(buf_id, lhs, direction)
+        local rhs = function()
+            -- Make new window and set it as target
+            local new_target_window
+            vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
+                vim.cmd(direction .. ' split')
+                new_target_window = vim.api.nvim_get_current_win()
+            end)
+
+            MiniFiles.set_target_window(new_target_window)
+            mini_enter()
         end
+
+        -- Adding `desc` will result into `show_help` entries
+        local desc = 'Split ' .. direction
+        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
     end
     vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
@@ -149,6 +161,8 @@ local function mini_setup()
             vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
             vim.keymap.set("n", "-", MiniFiles.go_out, { buffer = buf_id })
             vim.keymap.set("n", "<CR>", mini_enter, { buffer = buf_id })
+            map_split(buf_id, '<C-x>', 'belowright horizontal')
+            map_split(buf_id, '<C-v>', 'belowright vertical')
         end,
     })
 end
