@@ -48,6 +48,51 @@ path=(
   $path
 )
 
+
+# Rust setup
+if [[ -d $HOME/.cargo/bin ]]; then
+    path=("$HOME/.cargo/bin" $path)
+fi
+
+# Go Setup
+export GOPATH="$HOME/.go"
+if [[ -d "$GOPATH/bin" ]]; then
+    path=("$GOPATH/bin" $path)
+fi
+
+#GHCup setup
+if [[ -d $HOME/.ghcup/bin ]]; then
+    path=("$HOME/.ghcup/bin" $path)
+fi
+
+#Solana setup
+if [[ -d $HOME/.local/share/solana/install/active_release/bin ]]; then;
+    path=("$HOME/.local/share/solana/install/active_release/bin" $path)
+fi
+
+#Dotnet Tool setup
+if [[ -d $HOME/.dotnet/tools ]]; then;
+    path=("$HOME/.dotnet/tools" $path)
+fi
+
+if [[ -d $HOME/.npm-packages ]]; then;
+    path=("$HOME/.npm-packages/bin" $path)
+fi
+
+#Bun setup (for the all in one Javascript distro)
+if [[ -d $HOME/.bun ]]; then;
+    export BUN_INSTALL="$HOME/.bun"
+    path=("$BUN_INSTALL/bin" $path)
+fi
+
+#Brew Setup
+if [[ -d /opt/homebrew/bin ]]; then;
+    path=(/opt/homebrew/bin $path)
+fi
+if [[ -d /opt/homebrew/share/zsh/site-functions/ ]]; then;
+    fpath+=(/opt/homebrew/share/zsh/site-functions/)
+fi
+
 #
 # Less
 #
@@ -61,4 +106,9 @@ export LESS='-g -i -M -R -S -w -X -z-4'
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+#ZSH local
+if [[ -f $HOME/.zshlocal ]]; then;
+    source $HOME/.zshlocal
 fi
