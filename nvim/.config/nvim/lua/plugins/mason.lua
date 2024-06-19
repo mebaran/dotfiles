@@ -22,6 +22,7 @@ return {
                 "goimports",
                 "golines",
                 "gomodifytags",
+                "gopls",
                 "impl",
                 "templ",
                 -- Python

@@ -5,6 +5,10 @@ local M = {
         { "theHamsta/nvim-dap-virtual-text" },
         { "nvim-telescope/telescope-dap.nvim" },
         { "jbyuki/one-small-step-for-vimkind" },
+        {
+            "leoluz/nvim-dap-go",
+            opts = {},
+        },
     },
     -- stylua: ignore
     keys = {
@@ -72,8 +76,8 @@ local M = {
             function() require("dap").toggle_breakpoint() end,
             desc = "Toggle Breakpoint",
         },
-        { "<leader>dx", function() require("dap").terminate() end, desc = "Terminate", },
-        { "<leader>du", function() require("dap").step_out() end,  desc = "Step Out", },
+        { "<leader>dx", function() require("dap").terminate() end,                       desc = "Terminate", },
+        { "<leader>du", function() require("dap").step_out() end,                        desc = "Step Out", },
         { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Debug Nearest" },
     },
     config = function(plugin, opts)

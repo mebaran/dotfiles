@@ -137,7 +137,7 @@ local function mini_setup()
     local function mini_enter()
         MiniFiles.go_in({ close_on_file = true })
     end
-    local map_split = function(buf_id, lhs, direction)
+    local function map_split(buf_id, lhs, direction)
         local rhs = function()
             -- Make new window and set it as target
             local new_target_window

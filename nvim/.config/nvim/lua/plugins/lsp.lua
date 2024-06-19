@@ -41,6 +41,12 @@ return {
         dependencies = {
             { "folke/neoconf.nvim",                opts = {} },
             { "williamboman/mason-lspconfig.nvim", opts = {} },
+            {
+                "b0o/SchemaStore.nvim",
+                lazy = true,
+                version = false, -- last release is way too old
+            },
+
         },
         ---@class PluginLspOpts
         opts = {
