@@ -10,5 +10,15 @@ return {
     {
         'sainnhe/everforest',
         lazy = true
+    },
+    {
+        'olivercederborg/poimandres.nvim',
+        lazy = true,
+        opts = {}
+    },
+    {
+        'dgox16/oldworld.nvim',
+        lazy = true,
+        opts = {}
     }
 }

@@ -21,4 +21,4 @@ require('lazy').setup({
 -- Key map setup
 require('keymap')
 
-vim.cmd([[colorscheme seoulbones]])
+vim.cmd([[colorscheme oldworld]])

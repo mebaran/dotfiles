@@ -11,7 +11,7 @@ return {
             { "<C-R>", mode = "i" }
         },
         cmd = "Registers",
-        config = true
+        opts = {}
     },
     {
         "folke/flash.nvim",
@@ -69,11 +69,7 @@ return {
     },
     {
         "folke/zen-mode.nvim",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
+        opts = {},
         cmd = "ZenMode"
     },
     {
