@@ -130,4 +130,17 @@ return {
             { "=P", "<Plug>(YankyPutBeforeFilter)",           desc = "Put before applying a filter" },
         },
     },
+    {
+        "numtostr/Fterm.nvim",
+        opts = {},
+        keys = {
+            { "<C-l>", '<cmd>lua require("FTerm").toggle()<cr>', mode = { "n", "t" }, desc = "Toggle FTerm" },
+        },
+    },
+    {
+        "willothy/flatten.nvim",
+        opts = {},
+        lazy = false,
+        priority = 10001
+    },
 }
