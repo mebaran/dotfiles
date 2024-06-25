@@ -83,7 +83,9 @@ return {
             -- stylua: ignore
             {
                 "<leader>p",
-                function() require("telescope").extensions.yank_history.yank_history({}) end,
+                function()
+                    require("telescope").extensions.yank_history.yank_history({})
+                end,
                 desc = "Open Yank History"
             },
             {
@@ -134,7 +136,7 @@ return {
         "numtostr/Fterm.nvim",
         opts = {},
         keys = {
-            { "<C-l>", '<cmd>lua require("FTerm").toggle()<cr>', mode = { "n", "t" }, desc = "Toggle FTerm" },
+            { "<C-l>", '<cmd>lua require("FTerm").toggle()<cr>', mode = { "n", "t" }, desc = "Toggle Floating Term" },
         },
     },
     {
