@@ -41,12 +41,23 @@ opt.swapfile = false
 opt.writebackup = false
 
 -- terminal fixes
-local clean_term_grp = api.nvim_create_augroup("CleanTermGutter", { clear = true })
-api.nvim_create_autocmd("TermOpen", {
-    command = [[
-        setlocal nonumber norelativenumber signcolumn=yes:1
-    ]],
-    group = clean_term_grp
+term_fix_group = vim.api.nvim_create_augroup('TermFix', { clear = true })
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+    group = term_fix_group,
+    callback = function(event)
+        vim.cmd('setlocal nonumber')
+        vim.cmd('setlocal norelativenumber')
+        vim.cmd('setlocal signcolumn=yes:1')
+        -- vim.cmd('startinsert!')
+        vim.cmd('set cmdheight=1')
+        -- vim.bo[event.buf].buflisted = false
+        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+    end,
+})
+vim.api.nvim_create_autocmd({ 'WinEnter' }, {
+    pattern = "term://*",
+    group = term_fix_group,
+    command = "startinsert"
 })
 
 -- Diagnostics config
