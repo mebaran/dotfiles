@@ -52,6 +52,8 @@ fi
 # Extra env vars for interactive computing
 unsetopt AUTO_CD
 setopt EXTENDED_GLOB
+setopt AUTO_PUSHD
+setopt HIST_IGNORE_ALL_DUPS
 
 # SSH-agent config
 zstyle ':omz:plugins:ssh-agent' identities ~/.ssh/id*~*.pub 

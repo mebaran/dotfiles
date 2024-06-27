@@ -1,5 +1,15 @@
+# easy commands
 whence nvim &> /dev/null && alias vim=nvim
 whence lazygit &> /dev/null && alias lg=lazygit
 whence k3s &> /dev/null && alias kubectl="k3s kubectl"
 whence fdfind &> /dev/null && alias fd=fdfind
 whence batcat &> /dev/null && alias bat=batcat
+
+# History jump helpers
+alias di=ji
+alias j=z
+
+# K convenience
+alias ka="k -a"
+
+
