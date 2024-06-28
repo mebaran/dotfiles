@@ -24,55 +24,55 @@ local function mini_setup()
     rs("mini.clue", {
         triggers = {
             -- Leader triggers
-            { mode = 'n', keys = '<Leader>' },
-            { mode = 'x', keys = '<Leader>' },
+            { mode = "n", keys = "<Leader>" },
+            { mode = "x", keys = "<Leader>" },
 
             -- Built-in completion
-            { mode = 'i', keys = '<C-x>' },
+            { mode = "i", keys = "<C-x>" },
 
             -- `g` key
-            { mode = 'n', keys = 'g' },
-            { mode = 'x', keys = 'g' },
+            { mode = "n", keys = "g" },
+            { mode = "x", keys = "g" },
 
             -- Marks
-            { mode = 'n', keys = "'" },
-            { mode = 'n', keys = '`' },
-            { mode = 'x', keys = "'" },
-            { mode = 'x', keys = '`' },
+            { mode = "n", keys = "'" },
+            { mode = "n", keys = "`" },
+            { mode = "x", keys = "'" },
+            { mode = "x", keys = "`" },
 
             -- Registers
-            { mode = 'n', keys = '"' },
-            { mode = 'x', keys = '"' },
-            { mode = 'i', keys = '<C-r>' },
-            { mode = 'c', keys = '<C-r>' },
+            { mode = "n", keys = '"' },
+            { mode = "x", keys = '"' },
+            { mode = "i", keys = "<C-r>" },
+            { mode = "c", keys = "<C-r>" },
 
             -- Window commands
-            { mode = 'n', keys = '<C-w>' },
+            { mode = "n", keys = "<C-w>" },
 
             -- `z` key
-            { mode = 'n', keys = 'z' },
-            { mode = 'x', keys = 'z' },
+            { mode = "n", keys = "z" },
+            { mode = "x", keys = "z" },
 
             -- `Brackets`
-            { mode = 'n', keys = "[" },
-            { mode = 'n', keys = "]" },
-            { mode = 'x', keys = "[" },
-            { mode = 'x', keys = "]" },
+            { mode = "n", keys = "[" },
+            { mode = "n", keys = "]" },
+            { mode = "x", keys = "[" },
+            { mode = "x", keys = "]" },
         },
         clues = {
             -- Enhance this by adding descriptions for <Leader> mapping groups
-            require('mini.clue').gen_clues.builtin_completion(),
-            require('mini.clue').gen_clues.g(),
-            require('mini.clue').gen_clues.marks(),
+            require("mini.clue").gen_clues.builtin_completion(),
+            require("mini.clue").gen_clues.g(),
+            require("mini.clue").gen_clues.marks(),
             -- require('mini.clue').gen_clues.registers(),
-            require('mini.clue').gen_clues.windows(),
-            require('mini.clue').gen_clues.z(),
+            require("mini.clue").gen_clues.windows(),
+            require("mini.clue").gen_clues.z(),
 
             -- Submode for quick buffer navigation
-            { mode = 'n', keys = ']b', postkeys = ']' },
-            { mode = 'n', keys = ']w', postkeys = ']' },
-            { mode = 'n', keys = '[b', postkeys = '[' },
-            { mode = 'n', keys = '[w', postkeys = '[' },
+            { mode = "n", keys = "]b", postkeys = "]" },
+            { mode = "n", keys = "]w", postkeys = "]" },
+            { mode = "n", keys = "[b", postkeys = "[" },
+            { mode = "n", keys = "[w", postkeys = "[" },
         },
     })
     rs("mini.comment")
@@ -103,7 +103,7 @@ local function mini_setup()
     vim.api.nvim_create_autocmd("TermOpen", {
         callback = function()
             vim.b.miniindentscope_disable = true
-        end
+        end,
     })
 
     -- Mini BufDelete
@@ -142,7 +142,7 @@ local function mini_setup()
             -- Make new window and set it as target
             local new_target_window
             vim.api.nvim_win_call(MiniFiles.get_target_window(), function()
-                vim.cmd(direction .. ' split')
+                vim.cmd(direction .. " split")
                 new_target_window = vim.api.nvim_get_current_win()
             end)
 
@@ -151,8 +151,8 @@ local function mini_setup()
         end
 
         -- Adding `desc` will result into `show_help` entries
-        local desc = 'Split ' .. direction
-        vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+        local desc = "Split " .. direction
+        vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
     end
     vim.api.nvim_create_autocmd("User", {
         pattern = "MiniFilesBufferCreate",
@@ -161,8 +161,8 @@ local function mini_setup()
             vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
             vim.keymap.set("n", "-", MiniFiles.go_out, { buffer = buf_id })
             vim.keymap.set("n", "<CR>", mini_enter, { buffer = buf_id })
-            map_split(buf_id, '<C-x>', 'belowright horizontal')
-            map_split(buf_id, '<C-v>', 'belowright vertical')
+            map_split(buf_id, "<C-x>", "belowright horizontal")
+            map_split(buf_id, "<C-v>", "belowright vertical")
         end,
     })
 end

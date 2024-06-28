@@ -34,22 +34,22 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Window resize
-map('n', '<C-Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width' })
-map('n', '<C-Down>', '<Cmd>resize -2<CR>', { desc = 'Decrease window height' })
-map('n', '<C-Up>', '<Cmd>resize +2<CR>', { desc = 'Increase window height' })
-map('n', '<C-Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width' })
+map("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Terminal
-map('t', '<C-W>', [[<C-\><C-N><C-w>]], { desc = 'Focus other window' })
-map('t', '<C-x>', [[<C-\><C-n>]], { desc = 'Quick access to normal mode' })
-map('n', '<leader>tv', "<cmd>vsplit | terminal <cr>", { desc = 'Split terminal vertically' })
-map('n', '<leader>tx', "<cmd>split | terminal<cr>", { desc = 'Split terminal horizontally' })
+map("t", "<C-W>", [[<C-\><C-N><C-w>]], { desc = "Focus other window" })
+map("t", "<C-x>", [[<C-\><C-n>]], { desc = "Quick access to normal mode" })
+map("n", "<leader>tv", "<cmd>vsplit | terminal <cr>", { desc = "Split terminal vertically" })
+map("n", "<leader>tx", "<cmd>split | terminal<cr>", { desc = "Split terminal horizontally" })
 
 --Diagnostics
-map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-map('n', '[d', vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
-map('n', ']d', vim.diagnostic.goto_next, { desc = "Goto previous diagnostic" })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Set loclist with diagnostic locations" })
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto previous diagnostic" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Set loclist with diagnostic locations" })
 
 --Useful borrowings from LazyNvim below:
 

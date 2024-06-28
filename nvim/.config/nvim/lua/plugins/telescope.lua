@@ -1,15 +1,15 @@
 -- Mappings and utility functions borrowed from LazyVim
 
 local telescope_setup = function()
-    local telescope = require('telescope')
+    local telescope = require("telescope")
     telescope.setup({
         extensions = {
             ["ui-select"] = {
-                require("telescope.themes").get_cursor {}
-            }
-        }
+                require("telescope.themes").get_cursor({}),
+            },
+        },
     })
-    telescope.load_extension('fzf')
+    telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
     telescope.load_extension("yank_history")
 end
@@ -25,9 +25,12 @@ local function get_root()
     if path then
         for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
             local workspace = client.config.workspace_folders
-            local paths = workspace and vim.tbl_map(function(ws)
-                return vim.uri_to_fname(ws.uri)
-            end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
+            local paths = workspace
+                    and vim.tbl_map(function(ws)
+                        return vim.uri_to_fname(ws.uri)
+                    end, workspace)
+                or client.config.root_dir and { client.config.root_dir }
+                or {}
             for _, p in ipairs(paths) do
                 local r = vim.loop.fs_realpath(p)
                 if path:find(r, 1, true) then
@@ -77,49 +80,49 @@ return {
         dependencies = {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
-                build = 'make'
+                build = "make",
             },
-            'nvim-telescope/telescope-ui-select.nvim',
-            "nvim-lua/plenary.nvim"
+            "nvim-telescope/telescope-ui-select.nvim",
+            "nvim-lua/plenary.nvim",
         },
-        event = 'VeryLazy',
-        cmd = 'Telescope',
+        event = "VeryLazy",
+        cmd = "Telescope",
         keys = {
-            { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-            { "<leader>/",       telescope_builtin("live_grep"),                     desc = "Find in Files (Grep)" },
-            { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
-            { "<leader><space>", telescope_builtin("files"),                         desc = "Find Files (root dir)" },
+            { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+            { "<leader>/", telescope_builtin("live_grep"), desc = "Find in Files (Grep)" },
+            { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+            { "<leader><space>", telescope_builtin("files"), desc = "Find Files (root dir)" },
             -- find
-            { "<leader>fb",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-            { "<leader>bb",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-            { "<leader>ff",      telescope_builtin("files"),                         desc = "Find Files (root dir)" },
-            { "<leader>fF",      telescope_builtin("files", { cwd = false }),        desc = "Find Files (cwd)" },
-            { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
+            { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+            { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+            { "<leader>ff", telescope_builtin("files"), desc = "Find Files (root dir)" },
+            { "<leader>fF", telescope_builtin("files", { cwd = false }), desc = "Find Files (cwd)" },
+            { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
             -- git
-            { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                   desc = "commits" },
-            { "<leader>gs",      "<cmd>Telescope git_status<CR>",                    desc = "status" },
+            { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+            { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
             -- search
-            { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                  desc = "Auto Commands" },
-            { "<leader>sb",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Buffer" },
-            { "<leader>sc",      "<cmd>Telescope command_history<cr>",               desc = "Command History" },
-            { "<leader>sC",      "<cmd>Telescope commands<cr>",                      desc = "Commands" },
-            { "<leader>sd",      "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
-            { "<leader>sg",      telescope_builtin("live_grep"),                     desc = "Grep (root dir)" },
-            { "<leader>sG",      telescope_builtin("live_grep", { cwd = false }),    desc = "Grep (cwd)" },
-            { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                     desc = "Help Pages" },
-            { "<leader>sH",      "<cmd>Telescope highlights<cr>",                    desc = "Search Highlight Groups" },
-            { "<leader>sk",      "<cmd>Telescope keymaps<cr>",                       desc = "Key Maps" },
-            { "<leader>sM",      "<cmd>Telescope man_pages<cr>",                     desc = "Man Pages" },
-            { "<leader>sm",      "<cmd>Telescope marks<cr>",                         desc = "Jump to Mark" },
-            { "<leader>so",      "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
-            { "<leader>sR",      "<cmd>Telescope resume<cr>",                        desc = "Resume" },
-            { "<leader>sw",      telescope_builtin("grep_string"),                   desc = "Word (root dir)" },
-            { "<leader>sW",      telescope_builtin("grep_string", { cwd = false }),  desc = "Word (cwd)" },
-            { "<leader>sy",      "<cmd>Telescope yank_history<cr>",                  desc = "Yank History" },
+            { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+            { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+            { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+            { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+            { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+            { "<leader>sg", telescope_builtin("live_grep"), desc = "Grep (root dir)" },
+            { "<leader>sG", telescope_builtin("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+            { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+            { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+            { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+            { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+            { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+            { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+            { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+            { "<leader>sw", telescope_builtin("grep_string"), desc = "Word (root dir)" },
+            { "<leader>sW", telescope_builtin("grep_string", { cwd = false }), desc = "Word (cwd)" },
+            { "<leader>sy", "<cmd>Telescope yank_history<cr>", desc = "Yank History" },
             {
                 "<leader>uC",
                 telescope_builtin("colorscheme", { enable_preview = true }),
-                desc = "Colorscheme with preview"
+                desc = "Colorscheme with preview",
             },
             {
                 "<leader>ss",
@@ -137,7 +140,7 @@ return {
                         "Property",
                     },
                 }),
-                desc = "Goto Symbol"
+                desc = "Goto Symbol",
             },
             {
                 "<leader>sS",
@@ -155,8 +158,8 @@ return {
                         "Property",
                     },
                 }),
-                desc = "Goto Symbol (Workspace)"
+                desc = "Goto Symbol (Workspace)",
             },
-        }
+        },
     },
 }

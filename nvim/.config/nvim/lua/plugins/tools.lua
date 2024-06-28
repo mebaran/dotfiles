@@ -23,10 +23,11 @@ return {
             ---@type table<string,table>
             formatters_by_ft = {
                 css = { "prettierd" },
-                go = { "goimports", "golines", "gofumpt", },
+                go = { "goimports", "golines", "gofumpt" },
                 html = { "prettierd" },
-                javascript = { 'prettierd' },
-                python = { "autopep8", "isort" },
+                javascript = { "prettierd" },
+                lua = { "stylua" },
+                python = { "autopep8", "isort", "black" },
                 sql = { "pg_format" },
                 terraform = { "terraform_fmt" },
                 tf = { "terraform_fmt" },
@@ -38,7 +39,7 @@ return {
                 --   end,
                 -- },
             },
-        }
+        },
     },
     {
         "mfussenegger/nvim-lint",
@@ -47,7 +48,7 @@ return {
             -- Event to trigger linters
             events = { "BufWritePost", "BufReadPost" },
             linters_by_ft = {
-                go = { "nilaway" },
+                go = { "nilaway", "golangcilint" },
                 javascript = { "eslint_d" },
             },
             -- LazyVim extension to easily override linter options

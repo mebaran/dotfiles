@@ -31,7 +31,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             -- Adapters
             "nvim-neotest/neotest-go",
-            "nvim-neotest/neotest-python"
+            "nvim-neotest/neotest-python",
         },
         config = function(_, opts)
             local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -39,8 +39,8 @@ return {
                 virtual_text = {
                     format = function(diagnostic)
                         -- Replace newline and tab characters with space for more compact diagnostics
-                        local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+",
-                            "")
+                        local message =
+                            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
                         return message
                     end,
                 },

@@ -81,9 +81,9 @@ return {
                 dependencies = { "rafamadriz/friendly-snippets" },
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
-                end
+                end,
             },
-            { 'saadparwaiz1/cmp_luasnip', },
+            { "saadparwaiz1/cmp_luasnip" },
         },
     },
 }

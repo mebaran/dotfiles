@@ -2,14 +2,14 @@ local opt = vim.opt
 local api = vim.api
 local g = vim.g
 
-g.mapleader = ' '
+g.mapleader = " "
 
 -- misc
-opt.backspace = { 'eol', 'start', 'indent' }
-opt.encoding = 'utf-8'
-opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
-opt.syntax = 'enable'
-opt.listchars = 'tab:▸ '
+opt.backspace = { "eol", "start", "indent" }
+opt.encoding = "utf-8"
+opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+opt.syntax = "enable"
+opt.listchars = "tab:▸ "
 opt.exrc = true
 
 -- indention
@@ -33,7 +33,7 @@ opt.rnu = true
 opt.scrolloff = 20
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 
 -- backups
 opt.backup = false
@@ -41,23 +41,23 @@ opt.swapfile = false
 opt.writebackup = false
 
 -- terminal fixes
-term_fix_group = vim.api.nvim_create_augroup('TermFix', { clear = true })
-vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+term_fix_group = vim.api.nvim_create_augroup("TermFix", { clear = true })
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
     group = term_fix_group,
     callback = function(event)
-        vim.cmd('setlocal nonumber')
-        vim.cmd('setlocal norelativenumber')
-        vim.cmd('setlocal signcolumn=yes:1')
+        vim.cmd("setlocal nonumber")
+        vim.cmd("setlocal norelativenumber")
+        vim.cmd("setlocal signcolumn=yes:1")
         -- vim.cmd('startinsert!')
-        vim.cmd('set cmdheight=1')
+        vim.cmd("set cmdheight=1")
         -- vim.bo[event.buf].buflisted = false
-        vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
 })
-vim.api.nvim_create_autocmd({ 'WinEnter' }, {
+vim.api.nvim_create_autocmd({ "WinEnter" }, {
     pattern = "term://*",
     group = term_fix_group,
-    command = "startinsert"
+    command = "startinsert",
 })
 
 -- Diagnostics config

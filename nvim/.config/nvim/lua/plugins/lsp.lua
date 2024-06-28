@@ -39,14 +39,13 @@ return {
         "neovim/nvim-lspconfig",
         -- event = "LazyFile",
         dependencies = {
-            { "folke/neoconf.nvim",                opts = {} },
+            { "folke/neoconf.nvim", opts = {} },
             { "williamboman/mason-lspconfig.nvim", opts = {} },
             {
                 "b0o/SchemaStore.nvim",
                 lazy = true,
                 version = false, -- last release is way too old
             },
-
         },
         ---@class PluginLspOpts
         opts = {
@@ -118,7 +117,9 @@ return {
             -- return true if you don't want this server to be setup with lspconfig
             ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
             setup = {
-                jdtls = function() return true end,
+                jdtls = function()
+                    return true
+                end,
                 -- example to setup with typescript.nvim
                 -- tsserver = function(_, opts)
                 --   require("typescript").setup({ server = opts })
