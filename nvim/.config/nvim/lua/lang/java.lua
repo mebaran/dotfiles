@@ -44,22 +44,24 @@ return {
             local function attach_jdtls()
                 local fname = vim.api.nvim_buf_get_name(0)
                 local pname = find_project_name(fname)
-                local lombok_path = mason_registry.get_package('jdtls'):get_install_path() .. "/lombok.jar"
+                local lombok_path = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
                 -- Configuration can be augmented and overridden by opts.jdtls
                 local config = {
                     cmd = {
                         "jdtls",
                         "--jvm-arg=-javaagent:" .. lombok_path,
                         "--jvm-arg=-Xbootclasspath/a:" .. lombok_path,
-                        '-configuration', jdtls_config_dir(pname),
-                        '-data', jdtls_workspace_dir(pname)
+                        "-configuration",
+                        jdtls_config_dir(pname),
+                        "-data",
+                        jdtls_workspace_dir(pname),
                     },
                     root_dir = find_root_dir(fname),
                     init_options = {
                         bundles = bundles,
                     },
                     -- enable CMP capabilities
-                    capabilities = require("cmp_nvim_lsp").default_capabilities()
+                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
                 }
 
                 -- Existing server will be reused if the root_dir matches.
@@ -90,7 +92,7 @@ return {
                             ["<leader>co"] = { require("jdtls").organize_imports, "Organize Imports" },
                         } -- { mode = "n", buffer = args.buf })
                         for k, v in pairs(ckeys) do
-                            vim.keymap.set('n', k, v[1], { buffer = args.buf, desc = v[2] })
+                            vim.keymap.set("n", k, v[1], { buffer = args.buf, desc = v[2] })
                         end
                         local cvkeys = {
                             ["<leader>cxm"] = {
@@ -107,7 +109,7 @@ return {
                             },
                         } -- { mode = "v", buffer = args.buf })
                         for k, v in pairs(cvkeys) do
-                            vim.keymap.set('v', k, v[1], { buffer = args.buf, desc = v[2] })
+                            vim.keymap.set("v", k, v[1], { buffer = args.buf, desc = v[2] })
                         end
 
                         if mason_registry.is_installed("java-debug-adapter") then
@@ -124,7 +126,7 @@ return {
                                     ["<leader>tT"] = { require("jdtls.dap").pick_test, "Run Test" },
                                 }
                                 for k, v in pairs(dapkeys) do
-                                    vim.keymap.set('n', k, v[1], { buffer = args.buf, desc = v[2] })
+                                    vim.keymap.set("n", k, v[1], { buffer = args.buf, desc = v[2] })
                                 end
                             end
                         end
@@ -132,7 +134,7 @@ return {
                 end,
             })
             attach_jdtls()
-        end
+        end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -143,5 +145,5 @@ return {
                 end,
             },
         },
-    }
+    },
 }
