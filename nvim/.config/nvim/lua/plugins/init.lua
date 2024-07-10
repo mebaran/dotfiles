@@ -4,6 +4,23 @@ return {
         ft = "qf",
     },
     {
+        "danymat/neogen",
+        cmd = "Neogen",
+        opts = {
+            snippet_engine = "luasnip"
+        },
+        keys = {
+            {
+                "<Leader>cd",
+                mode = { "n" },
+                function()
+                    require("neogen").generate({ type = "func" })
+                end,
+                desc = "Neogen function docstring",
+            },
+        },
+    },
+    {
         "tversteeg/registers.nvim",
         name = "registers",
         keys = {
