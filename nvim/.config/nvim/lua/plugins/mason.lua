@@ -8,37 +8,38 @@ return {
         opts = {
             ensure_installed = {
                 -- Lua
-                "stylua",
                 "shfmt",
+                "stylua",
                 -- Golang
-                "iferr",
-                "goimports-reviser",
-                "nilaway",
-                "revive",
-                "gotestsum",
-                "gotests",
                 "delve",
                 "gofumpt",
                 "goimports",
+                "goimports-reviser",
                 "golines",
                 "gomodifytags",
                 "gopls",
+                "gotests",
+                "gotestsum",
+                "iferr",
                 "impl",
+                "nilaway",
+                "revive",
                 "templ",
                 -- Python
-                "debugpy",
                 "autopep8",
+                "debugpy",
                 "isort",
+                "pyink",
                 -- Java
-                "jdtls",
-                "java-test",
                 "java-debug-adapter",
+                "java-test",
+                "jdtls",
                 -- SQL
                 "sqlfluff",
                 "sqls",
                 -- Javascript
-                "prettierd",
                 "eslint_d",
+                "prettierd",
                 "typescript-language-server",
                 -- Teraform
                 "terraform-ls",

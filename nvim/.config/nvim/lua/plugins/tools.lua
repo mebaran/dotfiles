@@ -27,7 +27,7 @@ return {
                 html = { "prettierd" },
                 javascript = { "prettierd" },
                 lua = { "stylua" },
-                python = { "autopep8", "isort", "black" },
+                python = { "isort", "pyink" },
                 sql = { "pg_format" },
                 terraform = { "terraform_fmt" },
                 tf = { "terraform_fmt" },
