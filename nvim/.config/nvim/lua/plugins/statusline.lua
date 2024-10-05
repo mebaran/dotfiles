@@ -52,9 +52,6 @@ return {
         opts = {
             globalstatus = true,
         },
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
     },
     {
         "nanozuki/tabby.nvim",
