@@ -1,112 +1,132 @@
-return {
-    {
-        "stevearc/conform.nvim",
-        dependencies = { "mason.nvim" },
-        event = { "BufReadPre", "BufNewFile" },
-        cmd = "ConformInfo",
-        keys = {
-            {
-                "<leader>cf",
-                function()
-                    require("conform").format({ lsp_fallback = true })
-                end,
-                mode = { "n", "v" },
-                desc = "Format via Conform",
-            },
-        },
-        init = function()
-            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+local tools = {
+    -- Lua
+    "shfmt",
+    "stylua",
+    "lua-language-server",
+    -- Golang
+    "delve",
+    "gofumpt",
+    "goimports",
+    "goimports-reviser",
+    "golines",
+    "gomodifytags",
+    "gopls",
+    "gotests",
+    "gotestsum",
+    "iferr",
+    "impl",
+    "nilaway",
+    "revive",
+    "templ",
+    -- Python
+    "autopep8",
+    "basedpyright",
+    "debugpy",
+    "isort",
+    "pyink",
+    -- Java
+    "java-debug-adapter",
+    "java-test",
+    "jdtls",
+    -- SQL
+    "sqlfluff",
+    "sqls",
+    -- Javascript
+    "eslint_d",
+    "prettierd",
+    "typescript-language-server",
+    -- Teraform
+    "terraform-ls",
+}
+
+require("mason").setup()
+local mr = require("mason-registry")
+local function ensure_installed()
+    for _, tool in ipairs(tools) do
+        local p = mr.get_package(tool)
+        if not p:is_installed() then
+            p:install()
+        end
+    end
+end
+mr.refresh(ensure_installed)
+
+local servers = {
+    jsonls = {
+        -- lazy-load schemastore when needed
+        on_new_config = function(new_config)
+            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
         end,
-        opts = {
-            -- LazyVim will merge the options you set here with builtin formatters.
-            -- You can also define any custom formatters here.
-            ---@type table<string,table>
-            formatters_by_ft = {
-                css = { "prettierd" },
-                go = { "goimports", "golines", "gofumpt" },
-                html = { "prettierd" },
-                javascript = { "prettierd" },
-                lua = { "stylua" },
-                python = { "isort", "pyink" },
-                sql = { "pg_format" },
-                terraform = { "terraform_fmt" },
-                tf = { "terraform_fmt" },
-                ["terraform-vars"] = { "terraform_fmt" },
-                -- -- Example of using dprint only when a dprint.json file is present
-                -- dprint = {
-                --   condition = function(ctx)
-                --     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
-                --   end,
-                -- },
+        settings = {
+            json = {
+                format = {
+                    enable = true,
+                },
+                validate = { enable = true },
             },
         },
     },
-    {
-        "mfussenegger/nvim-lint",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = {
-            -- Event to trigger linters
-            events = { "BufWritePost", "BufReadPost" },
-            linters_by_ft = {
-                go = { "nilaway", "golangcilint" },
-                javascript = { "eslint_d" },
-            },
-            -- LazyVim extension to easily override linter options
-            -- or add custom linters.
-            ---@type table<string,table>
-            linters = {
-                -- -- Example of using selene only when a selene.toml file is present
-                -- selene = {
-                --   -- `condition` is another LazyVim extension that allows you to
-                --   -- dynamically enable/disable linters based on the context.
-                --   condition = function(ctx)
-                --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
-                --   end,
-                -- },
+    gopls = {
+        settings = {
+            gopls = {
+                gofumpt = true,
+                codelenses = {
+                    gc_details = false,
+                    generate = true,
+                    regenerate_cgo = true,
+                    run_govulncheck = true,
+                    test = true,
+                    tidy = true,
+                    upgrade_dependency = true,
+                    vendor = true,
+                },
+                hints = {
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
+                },
+                analyses = {
+                    fieldalignment = true,
+                    nilness = true,
+                    unusedparams = true,
+                    unusedwrite = true,
+                    useany = true,
+                },
+                usePlaceholders = true,
+                completeUnimported = true,
+                staticcheck = true,
+                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+                semanticTokens = true,
             },
         },
-        config = function(_, opts)
-            local M = {}
-
-            local lint = require("lint")
-            for name, linter in pairs(opts.linters) do
-                if type(linter) == "table" and type(lint.linters[name]) == "table" then
-                    lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
-                else
-                    lint.linters[name] = linter
-                end
-            end
-            lint.linters_by_ft = opts.linters_by_ft
-
-            function M.debounce(ms, fn)
-                local timer = vim.loop.new_timer()
-                return function(...)
-                    local argv = { ... }
-                    timer:start(ms, 0, function()
-                        timer:stop()
-                        vim.schedule_wrap(fn)(unpack(argv))
-                    end)
-                end
-            end
-
-            function M.lint()
-                local names = lint.linters_by_ft[vim.bo.filetype] or {}
-                local ctx = { filename = vim.api.nvim_buf_get_name(0) }
-                ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
-                names = vim.tbl_filter(function(name)
-                    local linter = lint.linters[name]
-                    return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
-                end, names)
-
-                if #names > 0 then
-                    lint.try_lint(names)
-                end
-            end
-
-            vim.api.nvim_create_autocmd(opts.events, {
-                group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-                callback = M.debounce(100, M.lint),
-            })
-        end,
     },
 }
+
+local function lspsetup(server)
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        cmp_nvim_lsp.default_capabilities() or {}
+    )
+    local server_opts = vim.tbl_deep_extend("force", {
+        capabilities = vim.deepcopy(capabilities),
+    }, servers[server] or {})
+    require("lspconfig")[server].setup(server_opts)
+end
+
+-- get all the servers that are available through mason-lspconfig
+local mlsp = require("mason-lspconfig")
+local all_mlsp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+for server, _ in pairs(vim.tbl_keys(servers)) do
+    if not all_mlsp_servers[server] then
+        lspsetup(server)
+    end
+end
+mlsp.setup({ handlers = { lspsetup } })

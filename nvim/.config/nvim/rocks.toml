@@ -1,0 +1,89 @@
+# This is your rocks.nvim plugins declaration file.
+# Here is a small yet pretty detailed example on how to use it:
+#
+# [plugins]
+# nvim-treesitter = "semver_version"  # e.g. "1.0.0"
+
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+# [rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"conform.nvim" = "8.1.0"
+"flash.nvim" = "2.1.0"
+"flatten.nvim" = "0.5.1"
+"gitsigns.nvim" = "0.9.0"
+"go.nvim" = "0.9.0"
+"kanagawa.nvim" = "scm"
+"lazydev.nvim" = "1.8.0"
+"lualine.nvim" = "scm"
+"mason-lspconfig.nvim" = "1.31.0"
+"mason.nvim" = "1.10.0"
+"mini.nvim"= "scm"
+"rocks-config.nvim" = "3.0.0"
+"rocks-git.nvim" = "2.3.1"
+"rocks-treesitter.nvim" = "1.1.3"
+"rocks.nvim" = "2.40.2"
+"trouble.nvim" = "3.6.0"
+"ts-comments.nvim" = "1.5.0"
+"zen-mode.nvim" = "1.4.0"
+cmp-nvim-lsp = "scm"
+cmp-path = "scm"
+cmp_luasnip = "scm"
+friendly-snippets = "scm"
+fzf-lua = "0.0.1473"
+luasnip = "2.3.0"
+neogen = "2.19.4"
+nvim-bqf = "1.1.1"
+nvim-cmp = "scm"
+nvim-lint = "scm"
+nvim-lspconfig = "1.0.0"
+nvim-treesitter = "scm"
+nvim-treesitter-context = "scm"
+nvim-treesitter-textobjects = "scm"
+nvim-ts-autotag = "scm"
+tree-sitter-go = "0.0.29"
+tree-sitter-html = "0.0.28"
+tree-sitter-lua = "0.0.29"
+tree-sitter-python = "0.0.28"
+tree-sitter-toml = "0.0.28"
+"yanky.nvim" = "2.0.0"
+"fterm.nvim" = "scm"
+sqlite = "v1.2.2"
+nvim-dap = "0.8.0"
+nvim-dap-ui = "4.0.0"
+nvim-dap-python = "scm"
+nvim-dap-go = "scm"
+nvim-dap-virtual-text = "scm"
+neotest = "5.6.1"
+
+[plugins.luvit-meta]
+git = "bilal2453/luvit-meta"
+rev = "ce76f6f6cdc9201523a5875a4471dcfe0186eb60"
+
+[config]
+plugins_dir = "plugins/"
+
+[treesitter]
+auto_highlight = "all"
+auto_install = "prompt"
+
+[bundles.autocomplete]
+items = [
+    "nvim-cmp",
+    "cmp-nvim-lsp",
+    "cmp-path",
+    "cmp_luasnip",
+    "friendly-snippets",
+    "luasnip",
+    "lazydev.nvim"
+]
+
+[bundles.tools]
+items = [
+    "mason.nvim",
+    "mason-lspconfig.nvim",
+    "nvim-lspconfig"
+]
