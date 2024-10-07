@@ -80,6 +80,7 @@ rs("mini.icons")
 rs("mini.indentscope", { try_as_border = true })
 rs("mini.jump")
 rs("mini.notify")
+rs("mini.pick")
 rs("mini.pairs")
 rs("mini.starter")
 rs("mini.surround", {

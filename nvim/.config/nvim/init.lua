@@ -55,3 +55,5 @@ end
 require("editor")
 -- Key map setup
 require("keymap")
+-- Picker setup
+require("picker")
