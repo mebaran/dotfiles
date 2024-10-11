@@ -2,15 +2,21 @@ local rs = function(s, t)
     require(s).setup(t)
 end
 
-local ai = require("mini.ai")
+local gen_spec = require("mini.ai").gen_spec
+local extra_spec = require("mini.extra").gen_ai_spec
 rs("mini.ai", {
     custom_textobjects = {
-        o = ai.gen_spec.treesitter({
+        o = gen_spec.treesitter({
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
         }, {}),
-        f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-        c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+        f = gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+        c = gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+        B = extra_spec.buffer(),
+        D = extra_spec.diagnostic(),
+        I = extra_spec.indent(),
+        L = extra_spec.line(),
+        N = extra_spec.number(),
     },
 })
 rs("mini.basics", {
@@ -20,6 +26,8 @@ rs("mini.basics", {
 })
 rs("mini.bufremove")
 rs("mini.bracketed")
+
+local clue = require("mini.clue")
 rs("mini.clue", {
     triggers = {
         -- Leader triggers
@@ -60,12 +68,12 @@ rs("mini.clue", {
     },
     clues = {
         -- Enhance this by adding descriptions for <Leader> mapping groups
-        require("mini.clue").gen_clues.builtin_completion(),
-        require("mini.clue").gen_clues.g(),
-        require("mini.clue").gen_clues.marks(),
-        -- require('mini.clue').gen_clues.registers(),
-        require("mini.clue").gen_clues.windows(),
-        require("mini.clue").gen_clues.z(),
+        clue.gen_clues.builtin_completion(),
+        clue.gen_clues.g(),
+        clue.gen_clues.marks(),
+        clue.gen_clues.registers(),
+        clue.gen_clues.windows(),
+        clue.gen_clues.z(),
 
         -- Submode for quick buffer navigation
         { mode = "n", keys = "]b", postkeys = "]" },
