@@ -108,6 +108,23 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+# FZF
+fcd() {
+  local dir
+  dir=$(fd ${1:-.} --type d --exclude .git | fzf --preview 'tree -C {} | head -n 100' +m) && cd "$dir"
+}
+
+fzp() {
+  local file
+  file=$(fzf --preview 'batcat --style=numbers --color=always --theme=TwoDark {} || cat {}' \
+             --height=100% --layout=reverse --border \
+             --preview-window=right:60%:wrap)
+  if [[ -n "$file" ]]; then
+    nvim "$file"
+  fi
+}
+
+
 #ZSH local
 if [[ -f $HOME/.zshlocal ]]; then;
     source $HOME/.zshlocal

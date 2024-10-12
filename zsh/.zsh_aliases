@@ -12,4 +12,5 @@ alias j=z
 # K convenience
 alias ka="k -a"
 
-
+# FZF convenience
+alias sd="cd \$(fd --type d --hidden --exclude .git | fzf)"

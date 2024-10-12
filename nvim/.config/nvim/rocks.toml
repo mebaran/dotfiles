@@ -59,6 +59,15 @@ tree-sitter-python = "0.0.29"
 tree-sitter-toml = "0.0.29"
 neotest-python = "scm"
 neotest-golang = "1.2.0"
+nvim-java = "1.0.0"
+"rocks-edit.nvim" = "scm"
+tree-sitter-sql = "0.0.29"
+tree-sitter-bash = "0.0.29"
+
+[plugins."parrot.nvim"]
+git = "frankroeder/parrot.nvim"
+rev = "v0.7.0"
+branch = "main"
 
 [plugins.luvit-meta]
 git = "bilal2453/luvit-meta"
