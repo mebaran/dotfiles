@@ -59,10 +59,10 @@ tree-sitter-python = "0.0.29"
 tree-sitter-toml = "0.0.29"
 neotest-python = "scm"
 neotest-golang = "1.2.0"
-nvim-java = "1.0.0"
 "rocks-edit.nvim" = "scm"
 tree-sitter-sql = "0.0.29"
 tree-sitter-bash = "0.0.29"
+tree-sitter-nix = "0.0.42"
 
 [plugins."parrot.nvim"]
 git = "frankroeder/parrot.nvim"
@@ -89,12 +89,12 @@ items = [
     "cmp_luasnip",
     "friendly-snippets",
     "luasnip",
-    "lazydev.nvim"
 ]
 
 [bundles.tools]
 items = [
     "mason.nvim",
     "mason-lspconfig.nvim",
-    "nvim-lspconfig"
+    "nvim-lspconfig",
+    "lazydev.nvim"
 ]
