@@ -15,6 +15,7 @@ if ! zgenom saved; then;
     zgenom ohmyzsh plugins/fzf
     zgenom ohmyzsh plugins/git
     zgenom ohmyzsh plugins/gitignore
+    zgenom ohmyzsh plugins/history
     zgenom ohmyzsh plugins/python
     zgenom ohmyzsh plugins/ssh-agent
     zgenom ohmyzsh plugins/virtualenvwrapper

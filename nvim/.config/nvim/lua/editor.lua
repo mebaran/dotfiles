@@ -41,7 +41,6 @@ opt.swapfile = false
 opt.writebackup = false
 
 -- terminal fixes
-vim.o.shell = "zsh --login"
 local term_fix_group = vim.api.nvim_create_augroup("TermFix", { clear = true })
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     group = term_fix_group,
