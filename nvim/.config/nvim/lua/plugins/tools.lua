@@ -37,6 +37,8 @@ local tools = {
     "typescript-language-server",
     -- Teraform
     "terraform-ls",
+    -- Nix
+    "nil"
 }
 
 require("mason").setup()

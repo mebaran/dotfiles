@@ -23,6 +23,7 @@ if ! zgenom saved; then;
     # completions
     zgenom load zsh-users/zsh-completions
     zgenom load zdharma-continuum/fast-syntax-highlighting
+    zgenom load nix-community/nix-zsh-completions
     zgenom load marlonrichert/zsh-autocomplete
     
     # other plugins
@@ -69,4 +70,8 @@ whence zoxide &> /dev/null && eval "$(zoxide init --cmd d zsh)"
 source "$HOME/.zsh_aliases"
 if [[ -f "$HOME/.zsh_local" ]]; then;
     source "$HOME/.zsh_local";
+fi
+
+if [[ -d /opt/homebrew/share/zsh/site-functions/ ]]; then;
+    fpath=(/opt/homebrew/share/zsh/site-functions/ $fpath)
 fi

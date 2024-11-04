@@ -63,6 +63,7 @@ neotest-golang = "1.2.0"
 tree-sitter-sql = "0.0.29"
 tree-sitter-bash = "0.0.29"
 tree-sitter-nix = "0.0.42"
+tree-sitter-json = "0.0.30"
 
 [plugins."parrot.nvim"]
 git = "frankroeder/parrot.nvim"
